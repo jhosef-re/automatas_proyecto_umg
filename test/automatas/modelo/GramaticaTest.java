@@ -122,4 +122,86 @@ class GramaticaTest {
         assertEquals(1, lista.size());
         assertTrue(lista.get(0).esEpsilon());
     }
+
+    // ---- Edge cases (refactor) ----
+
+    @Test
+    @DisplayName("agregarNoTerminal: null/vacío/blanco lanza excepción")
+    void ntVacio() {
+        assertThrows(ValidacionException.class, () -> g.agregarNoTerminal(null));
+        assertThrows(ValidacionException.class, () -> g.agregarNoTerminal(""));
+        assertThrows(ValidacionException.class, () -> g.agregarNoTerminal("   "));
+    }
+
+    @Test
+    @DisplayName("agregarTerminal: null/vacío/blanco lanza excepción")
+    void terminalVacio() {
+        assertThrows(ValidacionException.class, () -> g.agregarTerminal(null));
+        assertThrows(ValidacionException.class, () -> g.agregarTerminal(""));
+        assertThrows(ValidacionException.class, () -> g.agregarTerminal("   "));
+    }
+
+    @Test
+    @DisplayName("setInicial: null/vacío/blanco lanza excepción")
+    void inicialVacio() {
+        assertThrows(ValidacionException.class, () -> g.setInicial(null));
+        assertThrows(ValidacionException.class, () -> g.setInicial(""));
+        assertThrows(ValidacionException.class, () -> g.setInicial("   "));
+    }
+
+    @Test
+    @DisplayName("getProduccionesDe: NT inexistente retorna lista vacía")
+    void getProduccionesDeInexistente() throws ValidacionException {
+        g.agregarNoTerminal("A");
+        assertTrue(g.getProduccionesDe("X").isEmpty());
+    }
+
+    @Test
+    @DisplayName("getProducciones: copia profundamente inmutable")
+    void getProduccionesEsInmutable() throws ValidacionException {
+        g.agregarNoTerminal("A");
+        g.agregarTerminal("a");
+        g.agregarProduccion("A > a");
+
+        var prods = g.getProducciones();
+        assertThrows(UnsupportedOperationException.class, () -> prods.put("X", List.of()));
+        List<Produccion> listaInterna = prods.get("A");
+        assertNotNull(listaInterna);
+        assertThrows(UnsupportedOperationException.class, () -> listaInterna.add(null));
+        assertThrows(UnsupportedOperationException.class, () -> listaInterna.get(0).getDerecho().add("x"));
+    }
+
+    @Test
+    @DisplayName("agregarProduccion: múltiples '>' se rechazan")
+    void produccionMultiplesFlechas() throws ValidacionException {
+        g.agregarNoTerminal("A");
+        g.agregarTerminal("b");
+        g.agregarTerminal("c");
+        assertThrows(ValidacionException.class, () -> g.agregarProduccion("A > b > c"));
+    }
+
+    @Test
+    @DisplayName("agregarProduccion: solo '>' sin NT ni producción lanza excepción")
+    void produccionSoloFlecha() {
+        assertThrows(ValidacionException.class, () -> g.agregarProduccion(">"));
+    }
+
+    @Test
+    @DisplayName("agregarProduccion: espacios al alrededor se normalizan")
+    void produccionTrimNormaliza() throws ValidacionException {
+        g.agregarNoTerminal("A");
+        g.agregarTerminal("a");
+        g.agregarNoTerminal("B");
+        g.agregarProduccion("  A  >  a B  ");
+        assertEquals(1, g.getProduccionesDe("A").size());
+        assertEquals("A>a B", g.getProduccionesDe("A").get(0).toString());
+    }
+
+    @Test
+    @DisplayName("agregarProduccion: pipe inicial produce alternativa vacía")
+    void produccionPipeInicial() throws ValidacionException {
+        g.agregarNoTerminal("A");
+        g.agregarTerminal("a");
+        assertThrows(ValidacionException.class, () -> g.agregarProduccion("A > | a"));
+    }
 }

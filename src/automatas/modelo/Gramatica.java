@@ -5,6 +5,7 @@
 package automatas.modelo;
 
 import automatas.validacion.ValidacionException;
+import automatas.validacion.ValidacionUtils;
 import java.util.*;
 
 /** Gramática regular con las validaciones del enunciado. */
@@ -20,8 +21,13 @@ public class Gramatica {
         this.nombre = nombre;
     }
 
+    /**
+     * Agrega un no terminal: no repetido y distinto de cualquier terminal.
+     *
+     * @throws ValidacionException si está vacío o coincide con un terminal existente.
+     */
     public void agregarNoTerminal(String nt) throws ValidacionException {
-        nt = limpiar(nt, "no terminal");
+        nt = ValidacionUtils.normalizar(nt, "no terminal");
         if (noTerminales.contains(nt))
             throw new ValidacionException("El no terminal '" + nt + "' ya existe.");
         if (terminales.contains(nt))
@@ -29,8 +35,14 @@ public class Gramatica {
         noTerminales.add(nt);
     }
 
+    /**
+     * Agrega un terminal: no repetido y distinto de cualquier no terminal.
+     * La palabra "epsilon" está reservada para representar el vacío.
+     *
+     * @throws ValidacionException si está vacío, es "epsilon" o coincide con un NT.
+     */
     public void agregarTerminal(String t) throws ValidacionException {
-        t = limpiar(t, "terminal");
+        t = ValidacionUtils.normalizar(t, "terminal");
         if (t.equalsIgnoreCase("epsilon"))
             throw new ValidacionException("'epsilon' está reservado para el vacío.");
         if (terminales.contains(t))
@@ -40,9 +52,13 @@ public class Gramatica {
         terminales.add(t);
     }
 
-    /** Define el NT inicial; reemplaza al anterior. */
+    /**
+     * Define el NT inicial; si ya había uno, lo reemplaza.
+     *
+     * @throws ValidacionException si el NT es vacío o no fue declarado.
+     */
     public void setInicial(String nt) throws ValidacionException {
-        nt = limpiar(nt, "no terminal inicial");
+        nt = ValidacionUtils.normalizar(nt, "no terminal inicial");
         if (!noTerminales.contains(nt))
             throw new ValidacionException("El no terminal '" + nt + "' no existe.");
         this.inicial = nt;
@@ -50,21 +66,29 @@ public class Gramatica {
 
     /**
      * Agrega una línea de producción. Admite disyunción con '|'.
-     * Formato:  A > a B | b | epsilon   (símbolos separados por espacio)
+     * Formato: {@code NT > simbolo1 simbolo2 ... | alternativa2 | epsilon}.
+     * Los símbolos se separan por espacio; el vacío se representa con {@code epsilon}.
+     *
+     * <p>Cada alternativa genera una {@link Produccion} independiente. Las
+     * alternativas duplicadas se rechazan.
+     *
+     * @throws ValidacionException si falta {@code >}, el NT no existe, algún
+     *         símbolo no está declarado, hay una alternativa vacía o la
+     *         producción ya existe.
      */
     public void agregarProduccion(String linea) throws ValidacionException {
         int pos = linea.indexOf('>');
-        if (pos < 0)
+        if (pos < 0 || pos != linea.lastIndexOf('>'))
             throw new ValidacionException("Formato inválido. Use:  NT > simbolos");
-        String izq = linea.substring(0, pos).trim();
+        String izq = ValidacionUtils.normalizar(linea.substring(0, pos), "no terminal izquierdo");
         if (!noTerminales.contains(izq))
             throw new ValidacionException("El no terminal '" + izq + "' no existe.");
 
         for (String alternativa : linea.substring(pos + 1).split("\\|")) {
-            List<String> simbolos = new ArrayList<>();
             String alt = alternativa.trim();
             if (alt.isEmpty())
                 throw new ValidacionException("Alternativa vacía; use 'epsilon' para el vacío.");
+            List<String> simbolos = new ArrayList<>();
             if (!alt.equalsIgnoreCase("epsilon")) {
                 for (String s : alt.split("\\s+")) {
                     if (!noTerminales.contains(s) && !terminales.contains(s))
@@ -80,22 +104,35 @@ public class Gramatica {
         }
     }
 
+    /** @return lista de producciones del NT, o lista vacía si el NT no existe o no tiene producciones. */
     public List<Produccion> getProduccionesDe(String nt) {
-        return producciones.getOrDefault(nt, Collections.emptyList());
+        return Collections.unmodifiableList(producciones.getOrDefault(nt, Collections.emptyList()));
     }
 
-    private String limpiar(String valor, String campo) throws ValidacionException {
-        if (valor == null || valor.trim().isEmpty())
-            throw new ValidacionException("El " + campo + " no puede estar vacío.");
-        return valor.trim();
-    }
+    // ---- Getters (vistas inmutables, copia profunda donde aplica) ----
 
-    // ---- Getters ----
+    /** @return el nombre de la gramática (puede ser null). */
     public String getNombre() { return nombre; }
+
+    /** @return vista inmutable de los no terminales declarados. */
     public Set<String> getNoTerminales() { return Collections.unmodifiableSet(noTerminales); }
+
+    /** @return vista inmutable de los terminales declarados. */
     public Set<String> getTerminales() { return Collections.unmodifiableSet(terminales); }
+
+    /** @return NT inicial o {@code null} si nunca se asignó. */
     public String getInicial() { return inicial; }
+
+    /**
+     * @return copia **profundamente** inmutable del mapa de producciones
+     *         (NT → lista de Producciones). El mapa externo, las listas y las
+     *         producciones mismas no pueden ser mutadas por el consumidor.
+     */
     public Map<String, List<Produccion>> getProducciones() {
-        return Collections.unmodifiableMap(producciones);
+        Map<String, List<Produccion>> copia = new LinkedHashMap<>();
+        for (Map.Entry<String, List<Produccion>> e : producciones.entrySet()) {
+            copia.put(e.getKey(), Collections.unmodifiableList(new ArrayList<>(e.getValue())));
+        }
+        return Collections.unmodifiableMap(copia);
     }
 }

@@ -51,4 +51,28 @@ class RepositorioAutomatasTest {
         assertThrows(ValidacionException.class, () -> repo.registrar(new Gramatica("x")));
         assertThrows(ValidacionException.class, () -> repo.registrar(new AFD("x")));
     }
+
+    // ---- Edge cases (refactor) ----
+
+    @Test
+    @DisplayName("limpiar() borra todos los registros")
+    void limpiarBorraTodo() throws ValidacionException {
+        repo.registrar(new AFD("a1"));
+        repo.registrar(new Gramatica("g1"));
+        assertTrue(repo.existe("a1"));
+        assertTrue(repo.existe("g1"));
+        repo.limpiar();
+        assertFalse(repo.existe("a1"));
+        assertFalse(repo.existe("g1"));
+        assertNull(repo.obtenerAFD("a1"));
+        assertNull(repo.obtenerGramatica("g1"));
+    }
+
+    @Test
+    @DisplayName("existe(null) retorna false sin lanzar")
+    void existeNull() {
+        assertFalse(repo.existe(null));
+        assertNull(repo.obtenerAFD(null));
+        assertNull(repo.obtenerGramatica(null));
+    }
 }

@@ -94,4 +94,29 @@ class EvaluadorAFDTest {
         ResultadoEvaluacion r3 = new EvaluadorAFD(afd3).evaluar("");
         assertTrue(r3.esValida());
     }
+
+    // ---- Edge cases (refactor) ----
+
+    @Test
+    @DisplayName("evaluar(null) lanza IllegalArgumentException")
+    void evaluarCadenaNull() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new EvaluadorAFD(afd).evaluar(null));
+    }
+
+    @Test
+    @DisplayName("constructor con null lanza IllegalArgumentException")
+    void constructorAfdNull() {
+        assertThrows(IllegalArgumentException.class, () -> new EvaluadorAFD(null));
+    }
+
+    @Test
+    @DisplayName("evaluar en AFD sin estado inicial retorna inválida con mensaje")
+    void evaluarSinEstadoInicial() throws ValidacionException {
+        AFD sinInicial = new AFD("x");
+        sinInicial.agregarEstado("A");
+        ResultadoEvaluacion r = new EvaluadorAFD(sinInicial).evaluar("a");
+        assertFalse(r.esValida());
+        assertTrue(r.getDetalle().contains("no tiene estado inicial"));
+    }
 }

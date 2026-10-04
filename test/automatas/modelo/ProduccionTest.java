@@ -45,4 +45,37 @@ class ProduccionTest {
         assertNotEquals(p1, p2);
         assertNotEquals(p1, p3);
     }
+
+    // ---- Edge cases (refactor) ----
+
+    @Test
+    @DisplayName("constructor: izquierdo null lanza IllegalArgumentException")
+    void constructorIzqNull() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Produccion(null, Arrays.asList("a")));
+    }
+
+    @Test
+    @DisplayName("constructor: derecho null lanza IllegalArgumentException")
+    void constructorDerNull() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Produccion("A", null));
+    }
+
+    @Test
+    @DisplayName("getDerecho: lista retornada es inmutable")
+    void getDerechoInmutable() {
+        Produccion p = new Produccion("A", Arrays.asList("a", "B"));
+        assertThrows(UnsupportedOperationException.class,
+                () -> p.getDerecho().add("C"));
+    }
+
+    @Test
+    @DisplayName("equals: null y otro tipo retornan false")
+    void equalsNullYOtroTipo() {
+        Produccion p = new Produccion("A", Arrays.asList("a"));
+        assertNotEquals(p, null);
+        assertNotEquals(p, "A>a");
+        assertEquals(p, p, "reflexividad");
+    }
 }

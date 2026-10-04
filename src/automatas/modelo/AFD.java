@@ -5,6 +5,7 @@
 package automatas.modelo;
 
 import automatas.validacion.ValidacionException;
+import automatas.validacion.ValidacionUtils;
 import java.util.*;
 
 /** Autómata Finito Determinista con validaciones del enunciado. */
@@ -24,7 +25,7 @@ public class AFD {
 
     /** Agrega un estado: no repetido y distinto de cualquier símbolo del alfabeto. */
     public void agregarEstado(String estado) throws ValidacionException {
-        estado = limpiar(estado, "estado");
+        estado = ValidacionUtils.normalizar(estado, "estado");
         if (estados.contains(estado))
             throw new ValidacionException("El estado '" + estado + "' ya existe.");
         if (alfabeto.contains(estado))
@@ -34,7 +35,7 @@ public class AFD {
 
     /** Agrega un símbolo: no repetido y distinto de cualquier estado. */
     public void agregarSimbolo(String simbolo) throws ValidacionException {
-        simbolo = limpiar(simbolo, "símbolo");
+        simbolo = ValidacionUtils.normalizar(simbolo, "símbolo");
         if (simbolo.equalsIgnoreCase("epsilon"))
             throw new ValidacionException("epsilon no es válido en un AFD (solo en AFN).");
         if (alfabeto.contains(simbolo))
@@ -44,16 +45,21 @@ public class AFD {
         alfabeto.add(simbolo);
     }
 
-    /** Define el estado inicial; reemplaza al anterior si ya había uno. */
+    /**
+     * Define el estado inicial; si ya había uno, lo reemplaza.
+     *
+     * @throws ValidacionException si el estado es vacío o no fue declarado.
+     */
     public void setEstadoInicial(String estado) throws ValidacionException {
-        estado = limpiar(estado, "estado inicial");
+        estado = ValidacionUtils.normalizar(estado, "estado inicial");
         if (!estados.contains(estado))
             throw new ValidacionException("El estado '" + estado + "' no existe.");
         this.estadoInicial = estado;
     }
 
+    /** Marca un estado como de aceptación. No-op si ya estaba. */
     public void agregarEstadoAceptacion(String estado) throws ValidacionException {
-        estado = limpiar(estado, "estado de aceptación");
+        estado = ValidacionUtils.normalizar(estado, "estado de aceptación");
         if (!estados.contains(estado))
             throw new ValidacionException("El estado '" + estado + "' no existe.");
         estadosAceptacion.add(estado);
@@ -61,15 +67,26 @@ public class AFD {
 
     /** Usado al cargar archivos: la última definición de aceptación gana. */
     public void setAceptacion(String estado, boolean esAceptacion) throws ValidacionException {
+        estado = ValidacionUtils.normalizar(estado, "estado");
         if (!estados.contains(estado))
             throw new ValidacionException("El estado '" + estado + "' no existe.");
         if (esAceptacion) estadosAceptacion.add(estado);
         else estadosAceptacion.remove(estado);
     }
 
-    /** Agrega una transición verificando que el AFD siga siendo determinista. */
+    /**
+     * Agrega una transición verificando que el AFD siga siendo determinista.
+     * Los tres argumentos se normalizan con {@code trim()} antes de validar.
+     *
+     * @throws ValidacionException si origen/destino no existen, símbolo no
+     *         está en el alfabeto, ya hay otra transición con el mismo símbolo
+     *         desde el mismo origen (no determinismo), o el símbolo es epsilon.
+     */
     public void agregarTransicion(String origen, String destino, String simbolo)
             throws ValidacionException {
+        origen = ValidacionUtils.normalizar(origen, "origen");
+        destino = ValidacionUtils.normalizar(destino, "destino");
+        simbolo = ValidacionUtils.normalizar(simbolo, "símbolo");
         if (simbolo.equalsIgnoreCase("epsilon"))
             throw new ValidacionException("Las transiciones con epsilon solo son posibles en AFN.");
         if (!estados.contains(origen))
@@ -86,29 +103,44 @@ public class AFD {
         salidas.put(simbolo, destino);
     }
 
-    /** Devuelve el destino o null si no hay transición. */
+    /** Devuelve el destino de la transición desde {@code estado} con {@code simbolo}, o {@code null} si no hay. */
     public String mover(String estado, String simbolo) {
         Map<String, String> salidas = transiciones.get(estado);
         return salidas == null ? null : salidas.get(simbolo);
     }
 
+    /** Indica si el estado es de aceptación. */
     public boolean esAceptacion(String estado) {
         return estadosAceptacion.contains(estado);
     }
 
-    private String limpiar(String valor, String campo) throws ValidacionException {
-        if (valor == null || valor.trim().isEmpty())
-            throw new ValidacionException("El " + campo + " no puede estar vacío.");
-        return valor.trim();
-    }
+    // ---- Getters (vistas inmutables, copia profunda donde aplica) ----
 
-    // ---- Getters (copias de solo lectura) ----
+    /** @return el nombre del AFD (puede ser null si se construyó con null). */
     public String getNombre() { return nombre; }
+
+    /** @return vista inmutable de los estados declarados. */
     public Set<String> getEstados() { return Collections.unmodifiableSet(estados); }
+
+    /** @return vista inmutable del alfabeto. */
     public Set<String> getAlfabeto() { return Collections.unmodifiableSet(alfabeto); }
+
+    /** @return vista inmutable de los estados de aceptación. */
     public Set<String> getEstadosAceptacion() { return Collections.unmodifiableSet(estadosAceptacion); }
+
+    /** @return estado inicial o {@code null} si nunca se asignó. */
     public String getEstadoInicial() { return estadoInicial; }
+
+    /**
+     * @return copia **profundamente** inmutable del mapa de transiciones
+     *         (origen → símbolo → destino). Ni el mapa externo ni los mapas
+     *         internos ni los valores pueden ser mutados por el consumidor.
+     */
     public Map<String, Map<String, String>> getTransiciones() {
-        return Collections.unmodifiableMap(transiciones);
+        Map<String, Map<String, String>> copia = new LinkedHashMap<>();
+        for (Map.Entry<String, Map<String, String>> e : transiciones.entrySet()) {
+            copia.put(e.getKey(), Collections.unmodifiableMap(new LinkedHashMap<>(e.getValue())));
+        }
+        return Collections.unmodifiableMap(copia);
     }
 }
