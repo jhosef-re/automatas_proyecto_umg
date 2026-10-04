@@ -1,5 +1,6 @@
 # Dudas a consultar al catedrático
 **Fecha de armado:** 03-oct-2026 · **Ventana para enviarlas:** cuanto antes (Fase 0)
+**Estado:** 🟡 Esperando respuesta — Fase 2 pausada hasta recibir respuestas (sobre todo §1.1 y §1.6).
 
 ---
 

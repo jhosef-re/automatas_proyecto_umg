@@ -1,14 +1,15 @@
 # Estado del proyecto – Autómatas y Lenguajes Formales
-**Última actualización:** 03-oct-2026 · **Hoy = inicio de Fase 0** · **Entrega:** 05-nov-2026
+**Última actualización:** 03-oct-2026 · **Entrega:** 05-nov-2026
 
 > Leyenda: ✅ hecho · 🟡 parcial (iniciado pero incompleto) · ❌ pendiente · ⚠️ bloqueado
+> **Fase actual:** Fase 1 ✅ (con refactor). Esperando dudas del catedrático antes de Fase 2.
 
 ---
 
 ## Resumen ejecutivo
-- **Avance global estimado:** ~25 % (Fases 0 y 1 completas; documentación del plan + modelo con tests).
-- **Fase actual en curso:** lista para iniciar **Fase 2 – Evaluación de cadenas**.
-- **Riesgo principal:** quedan 25 días, 7 fases por delante; `EvaluadorGramatica` y conversión AFD↔Gramática son los más riesgosos.
+- **Avance global estimado:** ~30 % (Fases 0 y 1 completas + refactor Fase 1; documentación + modelo robusto con tests).
+- **Fase actual en curso:** **pausada** esperando respuesta del catedrático a las dudas de `DUDAS_CONSULTAR.md` antes de arrancar **Fase 2**.
+- **Riesgo principal:** quedan 25 días, 7 fases por delante; `EvaluadorGramatica` y conversión AFD↔Gramática son los más riesgosos (dependientes de la respuesta).
 
 ---
 
@@ -25,21 +26,24 @@
 - [ ] **Archivos de prueba propios** (3 `.afd` + 3 `.gtk`, con casos borde)
 - **Entregable pendiente:** proyecto compilando con `Main` vacío + lista de dudas enviada.
 
-### Fase 1 – Modelo de dominio y validaciones (07 – 11 oct) · 5 días ✅ COMPLETO
+### Fase 1 – Modelo de dominio y validaciones (07 – 11 oct) · 5 días ✅ COMPLETO + REFACTOR
 - [x] `validacion/ValidacionException.java` ✅ creado
-- [x] `modelo/AFD.java` ✅ creado con todas las validaciones
-- [x] `modelo/Gramatica.java` ✅ creado con todas las validaciones
-- [x] `modelo/Produccion.java` ✅ creado
+- [x] `validacion/ValidacionUtils.java` ✅ creado (DRY, normalización con trim)
+- [x] `modelo/AFD.java` ✅ creado con todas las validaciones + copia profunda inmutable en `getTransiciones()`
+- [x] `modelo/Gramatica.java` ✅ creado con todas las validaciones + copia profunda inmutable en `getProducciones()`
+- [x] `modelo/Produccion.java` ✅ creado + validación null en constructor + instanceof pattern
 - [x] Archivos creados en disco ✅
 - [x] `Estado`/`Simbolo` como value objects (se usa `String`; suficiente por ahora)
-- [x] **JUnit 5 con pruebas por cada regla de validación** ✅ 38/38 tests pasan
+- [x] **JUnit 5 con pruebas por cada regla de validación** ✅ 62/62 tests pasan (38 originales + 24 nuevos)
 - [x] Repositorio GitHub/GitLab compartido (local por ahora)
-- [x] `RepositorioAutomatas` (Singleton) implementado y testeado
-- [x] `EvaluadorAFD` implementado y testeado con el caso `aababb` del enunciado
+- [x] `RepositorioAutomatas` (Singleton) implementado y testeado + javadoc completo
+- [x] `EvaluadorAFD` implementado y testeado con el caso `aababb` del enunciado + null check + javadoc
+- [x] `ResultadoEvaluacion` + javadoc del formato de `detalle`
 - [x] `Main` ejecuta y reproduce exactamente la ruta esperada
 - [x] Estructura `nbproject/` lista para abrir en NetBeans
 - [x] Scripts `probar.sh` para correr tests/run desde línea de comandos (sin `ant`)
-- **Entregable cumplido:** el modelo funciona por consola/tests, sin UI.
+- [x] Refactor post-Fase 1 (auditoría exhaustiva): ver commit `d94cc5c`
+- **Entregable cumplido:** el modelo funciona por consola/tests, sin UI, y es robusto a edge cases.
 
 ### Fase 2 – Evaluación de cadenas (12 – 16 oct) · 5 días
 - [x] `servicio/Evaluador.java` (interfaz)
@@ -141,8 +145,8 @@
 ## Cronograma visual
 
 ```
-Sem 1 (03-11 oct): Fase 0 + Fase 1 .................. ✅
-Sem 2 (12-18 oct): Fase 2 + mitad Fase 3 ............ 🟡 listo para empezar
+Sem 1 (03-11 oct): Fase 0 + Fase 1 + refactor ........ ✅ ✅ ✅
+Sem 2 (12-18 oct): Fase 2 + mitad Fase 3 ............ 🟡 esperando dudas del catedrático
 Sem 3 (19-25 oct): Fase 3 + Fase 4 .................. ❌
 Sem 4 (26 oct-01 nov): Fase 5 + arranque Fase 6 ..... ❌
 Sem 5 (02-05 nov): Fase 6 + 7 + 8 (entrega) ......... ❌

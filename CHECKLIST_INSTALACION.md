@@ -8,6 +8,7 @@
 1. **JDK 17 unificado vía `JAVA_HOME`** en lugar de `update-alternatives` (más limpio, no requiere sudo).
 2. **NetBeans instalado vía Flatpak** (sandbox); JDK 17 copiado a `~/.local/share/jdk17/` para sortear la sandbox.
 4. **OpenPDF 1.3.43** (no la última 2.x/3.x) por requerir JDK 21+ las versiones modernas.
+5. **Bug conocido de NetBeans** ("Broken Platform Reference") resuelto: ver sección 2 abajo.
 
 ---
 
