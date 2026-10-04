@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Top-level Ant build file. Delegates to nbproject/build-impl.xml which
+    contains all the real logic. This is the standard NetBeans layout.
+-->
+<project name="ProyectoAutomatas" default="default" basedir=".">
+    <description>Builds, tests, and runs the ProyectoAutomatas Java application.</description>
+    <import file="nbproject/build-impl.xml"/>
+    <import file="nbproject/profiler-impl.xml" optional="true"/>
+</project>

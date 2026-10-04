@@ -1,0 +1,13 @@
+build/
+dist/
+nbproject/private/
+nbproject/build-impl.xml.bak
+target/
+*.class
+*.jar.bak
+*.tmp
+
+# ignorar backup files del usuario
+*~
+*.swp
+*.bak

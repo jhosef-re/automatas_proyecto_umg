@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Custom build-impl.xml para ProyectoAutomatas.
+    Compatible con NetBeans Ant projects. Provee targets:
+        - init, clean, compile, test, run, jar, test-single, run-single, javadoc, profile
+-->
+<project name="ProyectoAutomatas-impl" default="default" basedir="..">
+
+    <property file="nbproject/project.properties"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="junit.jar" value="${lib.dir}/junit-platform-console-standalone-1.10.2.jar"/>
+    <property name="openpdf.jar" value="${lib.dir}/openpdf-1.3.43.jar"/>
+
+    <target name="init" description="Inicializa directorios de build">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${build.classes.dir}"/>
+        <mkdir dir="${build.test.classes.dir}"/>
+        <mkdir dir="${build.test.results.dir}"/>
+        <mkdir dir="${meta.inf.dir}"/>
+    </target>
+
+    <target name="clean" description="Limpia artefactos de build">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compila el código fuente">
+        <javac srcdir="${src.dir}" destdir="${build.classes.dir}"
+               source="17" target="17" encoding="UTF-8"
+               classpath="${openpdf.jar}"
+               includeantruntime="false"/>
+    </target>
+
+    <target name="test-compile" depends="compile" description="Compila los tests">
+        <javac srcdir="${test.src.dir}" destdir="${build.test.classes.dir}"
+               source="17" target="17" encoding="UTF-8"
+               classpath="${build.classes.dir}:${junit.jar}:${openpdf.jar}"
+               includeantruntime="false"/>
+    </target>
+
+    <target name="test" depends="test-compile" description="Ejecuta los tests JUnit 5">
+        <java jar="${junit.jar}" fork="true" failonerror="false">
+            <arg value="execute"/>
+            <arg value="--class-path"/>
+            <arg value="${build.classes.dir}:${build.test.classes.dir}"/>
+            <arg value="--scan-class-path"/>
+            <arg value="--details=tree"/>
+        </java>
+    </target>
+
+    <target name="run" depends="compile" description="Ejecuta la clase Main">
+        <java classname="${main.class}" fork="true" classpath="${build.classes.dir}:${openpdf.jar}"/>
+    </target>
+
+    <target name="default" depends="test" description="default → test"/>
+
+    <target name="jar" depends="compile" description="Genera el JAR">
+        <jar destfile="dist/${ant.project.name}.jar" basedir="${build.classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+</project>
