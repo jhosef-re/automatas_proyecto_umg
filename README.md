@@ -13,6 +13,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 ![Estado: En desarrollo](https://img.shields.io/badge/Estado-En%20desarrollo-orange?style=for-the-badge)
+![Avance: 33%](https://img.shields.io/badge/Avance-33%25-blue?style=for-the-badge&logo=progress&logoColor=white)
 
 ![Último commit](https://img.shields.io/github/last-commit/jhosef-re/automatas_proyecto_umg?style=flat-square&logo=git&logoColor=white)
 ![Lenguaje top](https://img.shields.io/github/languages/top/jhosef-re/automatas_proyecto_umg?style=flat-square&color=ED8B00)
@@ -20,7 +21,8 @@
 ---
 
 [📋 Descripción](#-descripción) · [✨ Características](#-características) · [🛠️ Stack](#-stack-tecnológico) ·
-[📦 Requisitos](#-requisitos) · [🚀 Instalación](#-instalación-y-uso) · [🧪 Tests](#-tests) · [🗺️ Roadmap](#-roadmap)
+[📦 Requisitos](#-requisitos) · [🚀 Instalación](#-instalación-y-uso) · [🧪 Tests](#-tests) · [🗺️ Roadmap](#-roadmap) ·
+[📘 Contexto completo](./CONTEXTO_PROYECTO.md)
 
 </div>
 
@@ -39,8 +41,11 @@ La aplicación permite:
 - Convertir entre ambos modelos.
 - Generar **reportes PDF** con el grafo (Graphviz), detalle y ejemplos de cadenas válidas/inválidas.
 
-> 📌 **Estado actual:** Fase 1 completa (modelo de dominio + 62 tests JUnit).
+> 📌 **Estado actual:** **33 % completo** (26/78 sub-ítems) · Fase 1 completa (modelo + 62 tests JUnit).
+> 🟡 **Pausado** esperando respuestas del catedrático a 3 preguntas críticas antes de arrancar Fase 2.
 > Fases 2–9 pendientes según el [roadmap](#-roadmap).
+>
+> 📘 Para el mapa completo del proyecto (desglose por fase, preguntas pendientes, cronograma, riesgos), ver [`CONTEXTO_PROYECTO.md`](./CONTEXTO_PROYECTO.md).
 
 ---
 
@@ -185,11 +190,13 @@ El proyecto fue diseñado para aplicar y poder **explicar en la defensa** los si
 
 | Documento | Descripción | Estado |
 |-----------|-------------|:------:|
+| 📘 **[`CONTEXTO_PROYECTO.md`](./CONTEXTO_PROYECTO.md)** | **Mapa completo del proyecto (33 % avance, preguntas catedrático, cronograma, riesgos)** | ✅ |
 | [`Plan_Proyecto_Automatas.md`](./Plan_Proyecto_Automatas.md) | Plan completo en 9 fases con cronograma y dudas al catedrático | ✅ |
 | [`Base_Inicial_Proyecto.md`](./Base_Inicial_Proyecto.md) | Esqueleto de código del modelo + vista (Fase 0/1) | ✅ |
 | [`ESTADO_PROYECTO.md`](./ESTADO_PROYECTO.md) | Checklist actualizado por fase | ✅ |
 | [`DUDAS_CONSULTAR.md`](./DUDAS_CONSULTAR.md) | Preguntas pendientes al catedrático | ✅ |
 | [`CHECKLIST_INSTALACION.md`](./CHECKLIST_INSTALACION.md) | Setup del entorno (Linux Fedora + NetBeans Flatpak) | ✅ |
+| [`PROMPT_RESUMIR.md`](./PROMPT_RESUMIR.md) | Plantillas para retomar sesiones con IA | ✅ |
 | 📘 Manual de Usuario | Capturas por pantalla, flujo paso a paso | ❌ Fase 8 |
 | 📗 Manual Técnico | Diagrama de clases, algoritmos | ❌ Fase 8 |
 
