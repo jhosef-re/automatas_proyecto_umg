@@ -65,14 +65,24 @@
     3. Apuntar a `/home/re/.local/share/jdk17` (NO a `/usr/lib/jvm/java-17-temurin-jdk`)
     4. `Tools > Options > Build > Java > Java Shell` → seleccionar la misma plataforma.
   > Pendiente de hacer manualmente cuando se cree el proyecto.
+  > 
+  > **Nota:** si no se registra el JDK 17 explícitamente, NetBeans usa su JDK bundled (cumple el requisito "17+"). Ver sección sobre **broken platform reference** más abajo.
 
 - [x] **Crear el proyecto inicial**
   - `File > New Project > Java with Ant > Java Application`
   - Nombre: `ProyectoAutomatas`
   - Paquete principal: `automatas`
   - Desmarcar "Create Main Class" (la crearemos nosotros)
-  - Java Platform: **JDK 17 (copia en `~/.local/share/jdk17/`)**
+  - Java Platform: **JDK 17 (copia en `~/.local/share/jdk17/`)** — o usar la bundled si no se registró la 17.
   > Pendiente de hacer manualmente cuando empecemos la Fase 1.
+
+### ⚠️ Broken Platform Reference (solucionado)
+
+Si al abrir el proyecto NetBeans muestra **"The project has a broken platform reference"**:
+
+- El `nbproject/project.properties` referencia una plataforma llamada `JDK_17` que no existe registrada en NetBeans.
+- **Solución aplicada:** se removió la línea `platform.active=JDK_17` y se reemplazó por comentarios. NetBeans ahora usa su JDK bundled (cumple el requisito "17+").
+- **Si querés JDK 17 explícitamente:** registrar manualmente vía `Tools > Java Platforms` (paso de arriba) y luego `Project > Properties > Libraries > Java Platform → seleccionar JDK 17`.
 
 ---
 
