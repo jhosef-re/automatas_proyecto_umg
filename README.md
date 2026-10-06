@@ -41,8 +41,8 @@ La aplicación permite:
 - Convertir entre ambos modelos.
 - Generar **reportes PDF** con el grafo (Graphviz), detalle y ejemplos de cadenas válidas/inválidas.
 
-> 📌 **Estado actual:** **100 % completo** (78/78 sub-ítems) · Fases 0-8 completas.
-> 🟢 Manuales + `.zip` final listos. Pendiente solo subir a Canvas (Jhosef) y Fase 9 (defensa).
+> 📌 **Estado actual:** **100 % completo** (78/78 sub-ítems) · Fases 0-8 completas (release v1.0.1 con los 3 integrantes visibles en Portada y PDF).
+> 🟢 Manuales + `.zip` v1.0.1 listos. Pendiente: subir a Canvas (Jhosef), enviar email al catedrático y Fase 9 (defensa).
 >
 > 📘 Para el mapa completo del proyecto (desglose por fase, preguntas pendientes, cronograma, riesgos), ver [`CONTEXTO_PROYECTO.md`](./CONTEXTO_PROYECTO.md).
 

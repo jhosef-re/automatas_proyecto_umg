@@ -2,14 +2,14 @@
 **Última actualización:** 06-oct-2026 · **Entrega:** 05-nov-2026
 
 > Leyenda: ✅ hecho · 🟡 parcial (iniciado pero incompleto) · ❌ pendiente · ⚠️ bloqueado
-> **Fase actual:** Fases 0-8 ✅ completas. Pendiente: 9 (defensa, post-entrega).
+> **Fase actual:** Fases 0-8 ✅ completas (release v1.0.1). Pendiente: 9 (defensa, post-entrega).
 
 ---
 
 ## Resumen ejecutivo
 - **Avance global estimado:** **100 %** (78/78 sub-ítems; Fases 0-8 ✅).
-- **Fase actual:** **Fase 8 ✅ completa**. Manual de Usuario + Manual Técnico + `.zip` final (`dist/ProyectoAutomatas_v1.0_2026-10-06.zip`, 134 archivos, 4.5 MB) listos para subir a Canvas. Script `release.sh` regenerable.
-- **Riesgo principal:** subir el `.zip` a Canvas antes del 05-nov-2026 23:59 (responsable: Jhosef Reyes). Fase 9 (defensa) es post-entrega.
+- **Fase actual:** **Fase 8 ✅ completa**. Manual de Usuario + Manual Técnico + `.zip` final **`dist/ProyectoAutomatas_v1.0.1_2026-10-06.zip`** (137 archivos, 4.5 MB) listos para subir a Canvas. Patch v1.0.1 incluye los 3 integrantes visibles en Portada y PDF. Script `release.sh` regenerable.
+- **Riesgo principal:** subir el `.zip` a Canvas antes del 05-nov-2026 23:59 (responsable: Jhosef Reyes). Fase 9 (defensa) es post-entrega. Email al catedrático pendiente (`docs/EMAIL_CATEDRATICO.md`).
 
 ---
 
@@ -129,13 +129,14 @@
 - **Entregable cumplido:** app estable, validada de punta a punta, lista para Fase 8 (manuales + entrega).
 
 ### Fase 8 – Documentación y entrega (06 oct) · 3 días ✅ COMPLETO
-- [x] **Manual de Usuario** (`docs/MANUAL_USUARIO.md`, ~377 líneas, con 8 capturas y flujos paso a paso)
+- [x] **Manual de Usuario** (`docs/MANUAL_USUARIO.md` v1.1, ~377 líneas, con 8 capturas y flujos paso a paso)
 - [x] **Manual Técnico** (`docs/MANUAL_TECNICO.md`, ~726 líneas, con diagrama de clases en Mermaid, 4 patrones explicados, 5 algoritmos con pseudocódigo, 8 decisiones de diseño + 5 limitaciones)
-- [x] **Script de release** (`release.sh`) — limpia build/, compila, corre 203 tests, empaqueta `.zip` portable (sin `.git/`/`build/`/`dist/`)
-- [x] **Empaquetado final** — `dist/ProyectoAutomatas_v1.0_2026-10-06.zip` (134 archivos, ~4.5 MB)
-- [x] **Notas del release** — `docs/RELEASE_v1.0.md` con desglose, métricas, comandos y responsable de subida
+- [x] **Script de release** (`release.sh`) — limpia build/, compila, corre 208 tests, empaqueta `.zip` portable (sin `.git/`/`build/`/`dist/`)
+- [x] **Empaquetado final v1.0.1** — `dist/ProyectoAutomatas_v1.0.1_2026-10-06.zip` (137 archivos, ~4.5 MB) — patch sobre v1.0 que muestra los 3 integrantes en Portada y PDF
+- [x] **Notas del release** — `docs/RELEASE_v1.0.md` con desglose de v1.0 + v1.0.1, métricas, comandos y responsable de subida
+- [x] **Email al catedrático** — `docs/EMAIL_CATEDRATICO.md` con las 7 preguntas asumidas (pendiente envío al canal del curso)
 - [ ] Subir a Canvas **antes de las 23:59 del 05-nov** (responsable: Jhosef Reyes)
-- **Entregable cumplido:** zip final + manuales + notas del release; pendiente solo la subida a Canvas.
+- **Entregable cumplido:** zip final v1.0.1 + manuales + email al catedrático; pendiente solo la subida a Canvas y el envío del email.
 
 ### Fase 9 – Preparación de la calificación (06 nov en adelante)
 - [ ] Cada integrante puede explicar cualquier parte del código

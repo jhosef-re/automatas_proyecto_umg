@@ -1,10 +1,32 @@
-# Release Notes v1.0 — 06-oct-2026
+# Release Notes v1.0.1 — 06-oct-2026
 
-> Snapshot de la entrega final (Fase 8) listo para subir a Canvas.
+> Patch sobre v1.0: la portada y el PDF ahora muestran los **3 integrantes**
+> del equipo con sus respectivos carnés (antes solo aparecía el carné principal).
+>
+> **Archivo:** `dist/ProyectoAutomatas_v1.0.1_2026-10-06.zip` (~4.5 MB, 137 archivos)
+>
+> **Para regenerar:** `./release.sh` (corre los 208 tests y falla si alguno no es verde).
+
+## 📋 Cambios respecto a v1.0
+
+| # | Cambio |
+|---|--------|
+| 1 | `DatosCurso.nombresCompletos()` — nuevo método estático que devuelve los 3 nombres con carné, uno por línea. |
+| 2 | `PanelPortada` — la línea "Carné: 9390-24-4816" se reemplazó por un bloque "Integrantes:" + 3 sub-líneas. |
+| 3 | `GeneradorPDF` — el párrafo "Carné: ..." se reemplazó por bloque "Integrantes:" + 3 sub-párrafos (centrados, fuente bold para el título). |
+| 4 | `DatosCursoTest` — 5 tests nuevos (208/208 verde total). |
+| 5 | `docs/capturas/01_portada.png` — re-capturada con la nueva portada. |
+| 6 | `docs/MANUAL_USUARIO.md` — bloque de Portada actualizado a v1.1. |
+
+---
+
+# Release Notes v1.0 — 06-oct-2026 (histórico)
+
+> Snapshot original de la entrega final (Fase 8).
 >
 > **Archivo:** `dist/ProyectoAutomatas_v1.0_2026-10-06.zip` (~4.5 MB, 134 archivos)
 >
-> **Para regenerar:** `./release.sh` (corre los 203 tests y falla si alguno no es verde).
+> **Para regenerar:** checkout al commit `8e73377` y correr `./release.sh`.
 
 ---
 
@@ -70,17 +92,17 @@ src/automatas/
 
 ---
 
-## ✅ Estado al cierre
+## ✅ Estado al cierre (v1.0.1)
 
 | Métrica | Valor |
 |---------|-------|
-| **Avance global** | **100 %** (Fases 0-7 completas, Fase 8 release) |
-| **Tests JUnit** | 203/203 verde (182 originales + 21 nuevos de Fase 7) |
+| **Avance global** | **100 %** (Fases 0-8 completas) |
+| **Tests JUnit** | 208/208 verde (203 originales + 5 nuevos de `DatosCursoTest`) |
 | **Warnings de compilación** | 0 |
 | **Archivos de prueba** | 11 (5 enunciado + 6 propios) |
-| **Capturas** | 8 PNG |
-| **Manuales** | 2 (Usuario + Técnico) |
-| **Integrantes** | 3 (Jhosef, Alejandro, Oscar) |
+| **Capturas** | 8 PNG (01_portada regenerada con 3 integrantes) |
+| **Manuales** | 2 (Usuario v1.1 + Técnico) |
+| **Integrantes** | **3 visibles** en Portada, PDF y manuales (Jhosef, Alejandro, Oscar) |
 | **Catedrático** | Inge. Alan G. Ucelo Morán |
 | **Stack** | JDK 17 + Swing + OpenPDF 1.3.43 + JUnit 5.10 + Graphviz 14.1.4 |
 
@@ -89,9 +111,9 @@ src/automatas/
 ## 🚀 Cómo ejecutar la app desde el zip
 
 ```bash
-unzip ProyectoAutomatas_v1.0_2026-10-06.zip -d ProyectoAutomatas
+unzip ProyectoAutomatas_v1.0.1_2026-10-06.zip -d ProyectoAutomatas
 cd ProyectoAutomatas
-./probar.sh test      # debería mostrar "203 tests successful"
+./probar.sh test      # debería mostrar "208 tests successful"
 ./probar.sh run       # abre la GUI Swing
 ```
 
@@ -105,7 +127,7 @@ cd ProyectoAutomatas
 
 **Responsable:** Jhosef Reyes (9390-24-4816).
 **Plazo:** antes del **05-nov-2026 23:59** (sin prórroga).
-**Archivo a subir:** `dist/ProyectoAutomatas_v1.0_2026-10-06.zip`.
+**Archivo a subir:** `dist/ProyectoAutomatas_v1.0.1_2026-10-06.zip`.
 
 > Subir con holgura, no en el último minuto.
 
@@ -118,3 +140,4 @@ cd ProyectoAutomatas
 - [ ] Alejandro explica la UI Swing completa (8 paneles).
 - [ ] Oscar explica reportes PDF + manuales + entrega.
 - [ ] Ensayo cruzado: cada uno responde sobre cualquier parte del código.
+- [ ] Revisar respuesta del catedrático a `docs/EMAIL_CATEDRATICO.md` (7 preguntas asumidas).

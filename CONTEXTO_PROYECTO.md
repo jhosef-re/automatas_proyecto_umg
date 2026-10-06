@@ -33,7 +33,7 @@
 | 📅 **Entrega** | Jueves 05 de noviembre de 2026, 23:59 |
 | ⏳ **Días restantes** | **30 días** (al 06-oct) |
 | 📊 **Avance global** | **100 %** (78/78 sub-ítems completos) |
-| 🚦 **Estado actual** | 🟢 Fases 0-8 completas. Pendiente: 9 (defensa, post-entrega) |
+| 🚦 **Estado actual** | 🟢 Fases 0-8 completas (release v1.0.1). Pendiente: 9 (defensa, post-entrega) |
 | 📦 **Repo GitHub** | https://github.com/jhosef-re/automatas_proyecto_umg |
 
 ### 🎯 Objetivo del proyecto
@@ -543,6 +543,7 @@ Si abrís un chat sin contexto, pegá este bloque:
 
 ## 📝 Notas de versión
 
+- **v1.0.1** (06-oct-2026): Patch sobre v1.0 — `DatosCurso.nombresCompletos()` para listar los 3 integrantes con carné; `PanelPortada` y `GeneradorPDF` ahora muestran un bloque "Integrantes:" con los 3 (antes solo el carné principal); `DatosCursoTest` con 5 tests nuevos (208/208 verde); `01_portada.png` re-capturada; `release.sh` bump a v1.0.1; zip regenerado en `dist/ProyectoAutomatas_v1.0.1_2026-10-06.zip` (137 archivos); `docs/RELEASE_v1.0.md` con tabla de cambios.
 - **v1.8** (06-oct-2026): Fase 8 completa — `docs/MANUAL_USUARIO.md` (~377 líneas, 8 capturas + flujos), `docs/MANUAL_TECNICO.md` (~726 líneas, diagrama Mermaid, 5 algoritmos), `release.sh` (script bash), `dist/ProyectoAutomatas_v1.0_2026-10-06.zip` (134 archivos, ~4.5 MB) generado y verificado, `docs/RELEASE_v1.0.md`. Avance global: 78/78 (Fases 0-8). Pendiente: subida a Canvas (responsable Jhosef) y Fase 9 (defensa).
 - **v1.7** (06-oct-2026): Fase 7 completa — 21 tests de integración end-to-end (`automatas.integration`), 6 archivos de prueba propios con casos borde, DatosCurso con los 3 integrantes reales y catedrático Ing. Alan G. Ucelo Morán, 8 capturas PNG en `docs/capturas/` para Manual de Usuario, javadoc completo en `Evaluador`/`EvaluadorAFD`/`ExcepcionReporte`/`RegistroEvaluacion`, limpieza de código muerto. Avance global: 78/78 (100 %). Tests: 203/203 verde.
 - **v1.6** (06-oct-2026): Documenta el fix v1.5.1; actualiza historial con `2630512`.
