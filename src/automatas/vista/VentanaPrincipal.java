@@ -39,9 +39,14 @@ public class VentanaPrincipal extends JFrame implements Navegador {
         setMinimumSize(new java.awt.Dimension(800, 560));
         setLocationRelativeTo(null);
 
-        contenedor.add(new PanelPortada(this),     PORTADA);
-        contenedor.add(new PanelMenu(this),        MENU);
-        // Las pantallas funcionales se registran en la subfase 5C.
+        contenedor.add(new PanelPortada(this),         PORTADA);
+        contenedor.add(new PanelMenu(this),            MENU);
+        contenedor.add(new PanelCrearAFD(this),        CREAR_AFD);
+        contenedor.add(new PanelCrearGramatica(this), CREAR_GRAM);
+        contenedor.add(new PanelEvaluar(this),         EVALUAR);
+        contenedor.add(new PanelCargar(this),          CARGAR);
+        contenedor.add(new PanelGuardar(this),         GUARDAR);
+        contenedor.add(new PanelReportes(this),        REPORTES);
 
         add(contenedor);
         irA(PORTADA);
