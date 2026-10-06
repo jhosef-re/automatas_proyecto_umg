@@ -35,8 +35,12 @@ public class PanelPortada extends JPanel {
         caja.add(etiqueta(DatosCurso.CURSO, 22, false));
         caja.add(Box.createVerticalStrut(20));
         caja.add(etiqueta("Sección: " + DatosCurso.SECCION, 18, false));
-        caja.add(etiqueta("Carné: "   + DatosCurso.CARNE,  18, false));
         caja.add(etiqueta("Catedrático: " + DatosCurso.CATEDRATICO, 16, false));
+        caja.add(Box.createVerticalStrut(10));
+        caja.add(etiqueta("Integrantes:", 16, true));
+        for (String linea : DatosCurso.nombresCompletos().split("\n")) {
+            caja.add(etiqueta(linea, 14, false));
+        }
         caja.add(Box.createVerticalStrut(40));
         caja.add(etiqueta("Presione ENTER para continuar", 16, false));
         add(caja);
