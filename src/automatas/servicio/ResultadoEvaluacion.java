@@ -15,7 +15,11 @@ package automatas.servicio;
  *       separados por {@code ; }. Si el AFD se bloquea en una transición
  *       inexistente, el paso bloqueado lleva {@code ?, simbolo} como destino.</li>
  *   <li><b>Gramática:</b> {@code "Expansión Gramática: A>0B>00B>..."}.
- *       Cada paso lleva el NT y su producción aplicada, separados por {@code >}.</li>
+ *       Cada paso lleva el <i>form</i> resultante de la aplicación de una
+ *       producción al primer NT, separados por {@code >}. Cuando la
+ *       producción aplicada es {@code ε}, el paso resultante lleva el
+ *       sufijo {@code (epsilon)} para indicar que el NT fue consumido.
+ *       Ejemplo completo: {@code "Expansión Gramática: A>0B>00B>001A>0011A>0011(epsilon)>0011"}.</li>
  * </ul>
  */
 public class ResultadoEvaluacion {
