@@ -1,0 +1,12 @@
+# Ejemplo del enunciado con comentarios
+# Estado inicial: A, aceptacion: D
+
+A,A,a;false,false
+A,C,b;false,false
+# Transiciones desde B
+B,A,a;false,false
+B,C,b;false,false
+# Transiciones desde C (D es aceptacion)
+C,B,a;false,false
+
+C,D,b;false,true

@@ -1,0 +1,3 @@
+# Gramatica que acepta 'a'* (cero o mas 'a's)
+S>epsilon
+S>a S
