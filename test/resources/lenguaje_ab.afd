@@ -1,7 +1,10 @@
 # AFD que acepta solo la cadena "ab"
-A,B,a;false,true
-A,C,b;false,false
-B,C,a;true,false
-B,C,b;true,false
-C,C,a;false,false
-C,C,b;false,false
+# A=inicial, B=despues de leer 'a', D=aceptacion (tras "ab"), T=trampa
+A,B,a;false,false
+A,T,b;false,false
+B,T,a;false,false
+B,D,b;false,true
+D,T,a;true,false
+D,T,b;true,false
+T,T,a;false,false
+T,T,b;false,false
