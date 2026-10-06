@@ -25,6 +25,11 @@ public class EvaluadorAFD implements Evaluador {
         this.afd = afd;
     }
 
+    /** @return el AFD subyacente (útil para los reportes PDF). */
+    public AFD getAfd() {
+        return afd;
+    }
+
     /**
      * @param cadena texto a evaluar (un carácter por símbolo)
      * @return resultado con la ruta y la validez

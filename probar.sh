@@ -33,7 +33,7 @@ case "$action" in
         find "$TEST" -name "*.java" > /tmp/.test-sources.txt
         javac -d "$BUILD/test-classes" -cp "$BUILD/classes:$JUNIT:$OPENPDF" @/tmp/.test-sources.txt
         echo "Tests compilados. Ejecutando…"
-        java -jar "$JUNIT" execute --class-path "$BUILD/classes:$BUILD/test-classes" --scan-class-path --details=tree
+        java -jar "$JUNIT" execute --class-path "$BUILD/classes:$BUILD/test-classes:$OPENPDF" --scan-class-path --details=tree
         ;;
     run)
         "$0" compile

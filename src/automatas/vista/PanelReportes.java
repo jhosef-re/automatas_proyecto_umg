@@ -7,18 +7,23 @@ package automatas.vista;
 import automatas.modelo.AFD;
 import automatas.modelo.Gramatica;
 import automatas.modelo.Produccion;
+import automatas.reporte.GeneradorPDF;
 import automatas.servicio.RepositorioAutomatas;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.io.IOException;
+import java.nio.file.Path;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * Pantalla de reportes. En Fase 5 solo implementa <b>Ver Detalle</b>:
@@ -61,8 +66,8 @@ public class PanelReportes extends JPanel {
         JButton btnVer = new JButton("Ver Detalle");
         btnVer.addActionListener(e -> mostrarDetalle());
         pie.add(btnVer);
-        JButton btnPdf = new JButton("Generar PDF (próximamente)");
-        btnPdf.setEnabled(false);
+        JButton btnPdf = new JButton("Generar PDF");
+        btnPdf.addActionListener(e -> generarPDF());
         pie.add(btnPdf);
         pie.add(BotonAyuda.crear(nav));
         JButton btnVolver = new JButton("Volver al menú");
@@ -78,6 +83,42 @@ public class PanelReportes extends JPanel {
         for (String nombre : repo.getNombres()) {
             String prefijo = (repo.obtenerAFD(nombre) != null) ? "[AFD] " : "[GTK]  ";
             modeloLista.addElement(prefijo + nombre);
+        }
+    }
+
+    private void generarPDF() {
+        String sel = listaModelos.getSelectedValue();
+        if (sel == null) {
+            nav.mostrarError("Sin selección", "Elige un modelo de la lista.");
+            return;
+        }
+        String nombre = sel.substring(4).trim();
+        RepositorioAutomatas repo = RepositorioAutomatas.getInstancia();
+        AFD afd = repo.obtenerAFD(nombre);
+        Gramatica g = repo.obtenerGramatica(nombre);
+
+        JFileChooser fc = new JFileChooser();
+        fc.setSelectedFile(new java.io.File(nombre + ".pdf"));
+        fc.setFileFilter(new FileNameExtensionFilter("Archivos PDF (*.pdf)", "pdf"));
+        if (fc.showSaveDialog(this) != JFileChooser.APPROVE_OPTION) return;
+        Path destino = fc.getSelectedFile().toPath();
+        try {
+            if (afd != null) {
+                GeneradorPDF.generar(afd, destino);
+                nav.mostrarInfo("PDF generado",
+                        "Reporte del AFD '" + nombre + "' guardado en:\n" + destino);
+            } else if (g != null) {
+                GeneradorPDF.generar(g, destino);
+                nav.mostrarInfo("PDF generado",
+                        "Reporte de la gramática '" + nombre + "' guardado en:\n" + destino);
+            } else {
+                nav.mostrarError("No existe",
+                        "No hay un AFD ni una gramática con nombre '" + nombre + "'.");
+            }
+        } catch (IOException ex) {
+            nav.mostrarError("Error de E/S", ex.getMessage());
+        } catch (Exception ex) {
+            nav.mostrarError("Error al generar PDF", ex.getMessage());
         }
     }
 

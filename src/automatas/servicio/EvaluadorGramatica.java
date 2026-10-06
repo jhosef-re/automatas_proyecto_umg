@@ -42,18 +42,23 @@ public class EvaluadorGramatica implements Evaluador {
     /** Tope de recursión para evitar explosión combinatoria / bucles infinitos. */
     public static final int MAX_PROFUNDIDAD = 100;
 
-    private final Gramatica gramatica;
+private final Gramatica gramatica;
 
     /**
-     * @param gramatica gramática regular lineal por la derecha (no puede ser null)
+     * @param gramatica gramática regular lineal por la derecha (no null)
      * @throws IllegalArgumentException si {@code gramatica} es null
-     * @throws ValidacionException      si alguna producción no es lineal por la derecha
+     * @throws ValidacionException      si alguna producción no es derecha pura
      */
     public EvaluadorGramatica(Gramatica gramatica) throws ValidacionException {
         if (gramatica == null)
             throw new IllegalArgumentException("La gramática no puede ser null");
         validarDerechaPura(gramatica);
         this.gramatica = gramatica;
+    }
+
+    /** @return la gramática subyacente (útil para los reportes PDF). */
+    public Gramatica getGramatica() {
+        return gramatica;
     }
 
     /**
