@@ -155,14 +155,25 @@
 
 ## TODO del equipo (datos faltantes)
 
-- [ ] **Cantidad de integrantes** y nombres
-- [ ] **Roles asignados** (modelo · conversiones · UI · reportes/doc)
-- [ ] **`DatosCurso.SECCION`** – valor real
-- [ ] **`DatosCurso.CARNE`** – valor real (para último dígito en Ayuda)
-- [ ] **`DatosCurso.CATEDRATICO`** – nombre completo
-- [ ] **Decisión de librería PDF** (OpenPDF recomendado)
-- [ ] **JDK y NetBeans exactos** a usar
-- [ ] **Sistema operativo de la máquina del calificador** (para confirmar Graphviz)
+- [x] **Cantidad de integrantes** y nombres (3: Jhosef, Alejandro, Oscar)
+- [x] **Roles asignados** (ver tabla de roles abajo)
+- [x] **`DatosCurso.SECCION`** = `"A"`
+- [x] **`DatosCurso.CARNE`** = `"9390-24-4816"` (para último dígito en Ayuda)
+- [x] **`DatosCurso.CATEDRATICO`** = `"Inge. Alan G. Ucelo Morán"`
+- [x] **Decisión de librería PDF** = OpenPDF 1.3.43
+- [x] **JDK y NetBeans exactos** = JDK 17 (Temurin) + NetBeans 17+
+- [x] **Sistema operativo de la máquina del calificador** = Linux/Windows con `dot` en PATH o ruta configurable vía propiedad `automatas.graphviz.path`
+
+### 👥 Equipo y reparto de roles
+
+| # | Integrante | Carné | Rol | Capas a defender en Fase 9 |
+|---|------------|-------|-----|----------------------------|
+| 1 | **Jhosef Estefano Reyes Román** | 9390-24-4816 | Modelo + Conversores + Parsers | `modelo/`, `servicio/` (conversores, evaluadores), `util/` (parsers), `archivo/` (lectores/escritores) |
+| 2 | **Alejandro Leiva García** | 9390-24-7148 | UI Swing | `vista/` completa: VentanaPrincipal, los 8 paneles, Navegador, BotonAyuda |
+| 3 | **Oscar René Gonzales Rojas** | 9390-24-8224 | Reportes + Manuales | `reporte/` (Dot/Graphviz/PDF), manuales de Usuario y Técnico, integración y entrega |
+
+> 📌 **Fase 9 (defensa):** cada integrante debe poder responder sobre **cualquier** parte del código,
+> aunque el reparto indica quién es responsable primario. Se recomienda ensayo cruzado antes de la defensa.
 
 ---
 
