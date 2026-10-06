@@ -106,6 +106,7 @@ public final class GeneradorPDF {
             throws com.lowagie.text.DocumentException {
         Font h1 = new Font(Font.HELVETICA, 22, Font.BOLD);
         Font h2 = new Font(Font.HELVETICA, 14, Font.NORMAL);
+        Font h2Bold = new Font(Font.HELVETICA, 14, Font.BOLD);
 
         Paragraph titulo = new Paragraph("Reporte — " + tipo, h1);
         titulo.setAlignment(Element.ALIGN_CENTER);
@@ -122,8 +123,19 @@ public final class GeneradorPDF {
         curso.setAlignment(Element.ALIGN_CENTER);
         doc.add(curso);
         doc.add(new Paragraph("Sección: " + DatosCurso.SECCION, h2));
-        doc.add(new Paragraph("Carné: " + DatosCurso.CARNE, h2));
         doc.add(new Paragraph("Catedrático: " + DatosCurso.CATEDRATICO, h2));
+        doc.add(new Paragraph(" "));
+
+        Paragraph pIntegrantes = new Paragraph("Integrantes:", h2Bold);
+        pIntegrantes.setAlignment(Element.ALIGN_CENTER);
+        doc.add(pIntegrantes);
+        for (String linea : DatosCurso.nombresCompletos().split("\n")) {
+            Paragraph p = new Paragraph(linea, h2);
+            p.setAlignment(Element.ALIGN_CENTER);
+            doc.add(p);
+        }
+
+        doc.add(new Paragraph(" "));
         doc.add(new Paragraph("Fecha: " + LocalDate.now(), h2));
 
         doc.newPage();
