@@ -13,7 +13,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 ![Estado: En desarrollo](https://img.shields.io/badge/Estado-En%20desarrollo-orange?style=for-the-badge)
-![Avance: 51%](https://img.shields.io/badge/Avance-51%25-blue?style=for-the-badge&logo=progress&logoColor=white)
+![Avance: 58%](https://img.shields.io/badge/Avance-58%25-blue?style=for-the-badge&logo=progress&logoColor=white)
 
 ![Último commit](https://img.shields.io/github/last-commit/jhosef-re/automatas_proyecto_umg?style=flat-square&logo=git&logoColor=white)
 ![Lenguaje top](https://img.shields.io/github/languages/top/jhosef-re/automatas_proyecto_umg?style=flat-square&color=ED8B00)
@@ -41,9 +41,9 @@ La aplicación permite:
 - Convertir entre ambos modelos.
 - Generar **reportes PDF** con el grafo (Graphviz), detalle y ejemplos de cadenas válidas/inválidas.
 
-> 📌 **Estado actual:** **51 % completo** (40/78 sub-ítems) · Fases 0, 1, 2 y 3 completas (modelo + 105 tests JUnit).
-> 🟢 Fases 2 y 3 listas: evaluadores + generador + conversiones AFD↔Gramática.
-> Fases 4–9 pendientes según el [roadmap](#-roadmap).
+> 📌 **Estado actual:** **58 % completo** (45/78 sub-ítems) · Fases 0, 1, 2, 3 y 4 completas (modelo + 142 tests JUnit).
+> 🟢 Fases 2, 3 y 4 listas: evaluadores + generador + conversiones + lectura/escritura de archivos.
+> Fases 5–9 pendientes según el [roadmap](#-roadmap).
 >
 > 📘 Para el mapa completo del proyecto (desglose por fase, preguntas pendientes, cronograma, riesgos), ver [`CONTEXTO_PROYECTO.md`](./CONTEXTO_PROYECTO.md).
 
@@ -61,8 +61,9 @@ La aplicación permite:
 | ✅ | Generador de cadenas (≥3 válidas + ≥3 inválidas, BFS) |
 | ✅ | Historial de evaluaciones (Singleton thread-safe) |
 | ✅ | Conversión AFD ↔ Gramática (con equivalencia verificada) |
-| ✅ | 105 tests JUnit pasando (modelo + evaluadores + generador + conversores) |
-| ❌ | Cargar/guardar archivos `.afd` y `.gtk` |
+| ✅ | Cargar/guardar archivos `.afd` y `.gtk` (con Factory) |
+| ✅ | 142 tests JUnit pasando (modelo + evaluadores + generador + conversores + I/O) |
+| ❌ | Paneles Swing: Crear AFD/Gramática, Evaluar, Cargar, Guardar, Reportes |
 | ❌ | Paneles Swing: Crear AFD/Gramática, Evaluar, Cargar, Guardar, Reportes |
 | ❌ | Generación de PDF con grafo (Graphviz) + cadenas |
 | ❌ | Manual de Usuario y Manual Técnico |
@@ -164,11 +165,11 @@ El proyecto usa **JUnit 5.10** (standalone) con cobertura de:
 ```bash
 $ ./probar.sh test
 ...
-Tests run: 105, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 142, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
 ```
 
-> 📊 **Estado actual:** 105/105 tests pasando.
+> 📊 **Estado actual:** 142/142 tests pasando.
 
 ---
 
@@ -178,9 +179,9 @@ El proyecto fue diseñado para aplicar y poder **explicar en la defensa** los si
 
 | Patrón            | Implementación                                              |
 |-------------------|-------------------------------------------------------------|
-| **Singleton**     | `servicio.RepositorioAutomatas` — registro único global     |
+| **Singleton**     | `servicio.RepositorioAutomatas` + `servicio.HistorialEvaluaciones` |
 | **Strategy**      | `servicio.Evaluador` (interfaz) + `EvaluadorAFD` / `EvaluadorGramatica` |
-| **Factory**       | `archivo.LectorAFD` / `LectorGTK` (por extensión, planificado) |
+| **Factory**       | `archivo.ArchivoFactory` (dispatch `.afd` ↔ `LectorAFD`/`EscritorAFD`, `.gtk` ↔ `LectorGTK`/`EscritorGTK`) |
 | **MVC**           | `modelo/` · `vista/` (Swing) · `servicio/` (controlador)    |
 | **Encapsulamiento** | Validaciones en setters/métodos del modelo (atributos `private final`) |
 | **Inmutabilidad** | Colecciones expuestas vía `Collections.unmodifiableXxx()`  |
@@ -211,7 +212,7 @@ El proyecto fue diseñado para aplicar y poder **explicar en la defensa** los si
 | **1** | Modelo de dominio + validaciones + tests JUnit (62/62)  | ✅ |
 | **2** | `EvaluadorGramatica` + `GeneradorCadenas` + `Historial` | ✅ |
 | **3** | Conversiones AFD ↔ Gramática                            | ✅ |
-| **4** | Lectores/Escritores `.afd` y `.gtk`                     | ❌ |
+| **4** | Lectores/Escritores `.afd` y `.gtk`                     | ✅ |
 | **5** | UI Swing: 7 paneles + menú                             | 🟡 *parcial* |
 | **6** | Reportes PDF + Graphviz                                | ❌ |
 | **7** | Pruebas integrales y pulido                            | ❌ |

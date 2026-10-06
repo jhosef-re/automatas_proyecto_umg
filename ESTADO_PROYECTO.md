@@ -71,13 +71,18 @@
 - [x] 105/105 tests pasan
 - **Entregable cumplido:** conversiones probadas en ambas direcciones con casos del enunciado + verificación de equivalencia sobre muestreo exhaustivo.
 
-### Fase 4 – Archivos de entrada y salida (22 – 25 oct) · 4 días
-- [ ] `archivo/LectorAFD.java` (estado inicial = primera línea, última aceptación gana)
-- [ ] `archivo/LectorGTK.java` (mayúsculas = NT, minúsculas = terminales)
-- [ ] `archivo/EscritorAFD.java`
-- [ ] `archivo/EscritorGTK.java`
-- [ ] Prueba ida-vuelta: cargar → guardar → cargar
-- **Entregable pendiente:** carga/guardado funcionando con archivos de prueba **sin modificarlos**.
+### Fase 4 – Archivos de entrada y salida (22 – 25 oct) · 4 días ✅ COMPLETO
+- [x] `archivo/Lector.java` (interfaz genérica `Lector<T>`)
+- [x] `archivo/Escritor.java` (interfaz genérica `Escritor<T>`)
+- [x] `archivo/LectorAFD.java` (estado inicial = origen de la primera línea; última definición de aceptación gana; tolera comentarios `#` y líneas vacías)
+- [x] `archivo/LectorGTK.java` (mayúsculas = NT, minúsculas = terminales; pre-pasada para declarar símbolos fuera de orden; NT inicial = NT de la primera línea; tolera comentarios)
+- [x] `archivo/EscritorAFD.java` (formato del enunciado; crea directorios padre)
+- [x] `archivo/EscritorGTK.java` (formato del enunciado; `epsilon` para vacío)
+- [x] `archivo/ArchivoFactory.java` (Factory: dispatch por extensión `.afd` ↔ `.gtk`)
+- [x] 5 recursos en `test/resources/` (enunciado.afd, enunciado.gtk, con_comentarios.afd, con_comentarios.gtk, con_epsilon.gtk)
+- [x] Pruebas ida-vuelta (escribir → leer → evaluar) para ambos formatos
+- [x] 142/142 tests pasan
+- **Entregable cumplido:** carga/guardado funcionando con archivos de prueba, sin modificarlos. Factory listo para Fase 5.
 
 ### Fase 5 – Interfaz gráfica (26 oct – 31 oct) · 6 días
 - [x] `vista/VentanaPrincipal.java` (CardLayout)
@@ -156,7 +161,7 @@
 ```
 Sem 1 (03-11 oct): Fase 0 + Fase 1 + refactor ........ ✅ ✅ ✅
 Sem 2 (12-18 oct): Fase 2 + Fase 3 .................. ✅ ✅
-Sem 3 (19-25 oct): Fase 4 (inicio) .................. ❌
+Sem 3 (19-25 oct): Fase 4 ........................... ✅
 Sem 4 (26 oct-01 nov): Fase 5 + arranque Fase 6 ..... ❌
 Sem 5 (02-05 nov): Fase 6 + 7 + 8 (entrega) ......... ❌
 ```

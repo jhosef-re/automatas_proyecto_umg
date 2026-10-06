@@ -32,8 +32,8 @@
 | 📦 **Stack** | Java 17 · Apache NetBeans 17+ · Swing · JUnit 5 · OpenPDF · Graphviz |
 | 📅 **Entrega** | Jueves 05 de noviembre de 2026, 23:59 |
 | ⏳ **Días restantes** | **32 días** (al 04-oct) |
-| 📊 **Avance global** | **51 %** (40/78 sub-ítems completos) |
-| 🚦 **Estado actual** | 🟢 Fases 0-3 completas. Pendientes: 4-9 |
+| 📊 **Avance global** | **58 %** (45/78 sub-ítems completos) |
+| 🚦 **Estado actual** | 🟢 Fases 0-4 completas. Pendientes: 5-9 |
 | 📦 **Repo GitHub** | https://github.com/jhosef-re/automatas_proyecto_umg |
 
 ### 🎯 Objetivo del proyecto
@@ -60,13 +60,13 @@ Construir una **aplicación de escritorio en Java** que permita:
 
 ## 📊 Porcentaje de avance
 
-### 🎯 Global: **51 %** (40 / 78 sub-ítems)
+### 🎯 Global: **58 %** (45 / 78 sub-ítems)
 
 ```
-████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 51 %
-                       ▲
-                       │
-                   AQUÍ ESTAMOS
+████████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░ 58 %
+                          ▲
+                          │
+                      AQUÍ ESTAMOS
 ```
 
 ### 📋 Desglose por fase
@@ -76,8 +76,8 @@ Construir una **aplicación de escritorio en Java** que permita:
 | **0** | Preparación (instalaciones + repo + dudas)   | **75 %** | 6/8 | `█████████████░░░` |
 | **1** | Modelo + validaciones + tests                | **100 %** | 17/17 | `█████████████████` |
 | **2** | `EvaluadorGramatica` + `GeneradorCadenas`    | **100 %** | 7/7 | `█████████████████` |
-| **3** | Conversiones AFD ↔ Gramática                 | **100 %** | **4/4** | `█████████████████` |
-| **4** | Lectores/Escritores `.afd` y `.gtk`          | **0 %** | 0/5 | `░░░░░░░░░░░░░░░░` |
+| **3** | Conversiones AFD ↔ Gramática                 | **100 %** | 4/4 | `█████████████████` |
+| **4** | Lectores/Escritores `.afd` y `.gtk`          | **100 %** | **5/5** | `█████████████████` |
 | **5** | UI Swing: 7 paneles + menú                   | **38 %** | 5/13 | `███████░░░░░░░░░` |
 | **6** | Reportes PDF + Graphviz                      | **0 %** | 0/6 | `░░░░░░░░░░░░░░░░` |
 | **7** | Pruebas integrales y pulido                  | **0 %** | 0/4 | `░░░░░░░░░░░░░░░░` |
@@ -141,9 +141,8 @@ Construir una **aplicación de escritorio en Java** que permita:
 - ❌ `PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes`
 - 🟡 Botón **Ayuda** existe solo en `PanelMenu`, falta propagar
 
-### ❌ Lo que falta (38 sub-ítems)
+### ❌ Lo que falta (33 sub-ítems)
 
-- ❌ **Fase 4:** 5 ítems (lectores/escritores — §1.5 asumido como `epsilon`)
 - ❌ **Fase 5:** 8 ítems (6 paneles + 2 extras)
 - ❌ **Fase 6:** 6 ítems (PDF + Graphviz)
 - ❌ **Fase 7:** 4 ítems (pruebas integrales)
@@ -211,13 +210,19 @@ Construir una **aplicación de escritorio en Java** que permita:
 - Decisiones documentadas: gramáticas no deterministas y multi-terminal lanzan `ValidacionException`.
 - Tests de equivalencia (5): AFD↔Gramática en ambas direcciones, ida-vuelta AFD→Gram→AFD, ida-vuelta Gram→AFD→Gram, múltiples AFDs distintos (sampling exhaustivo de cadenas ≤ longitud 4).
 
-### ❌ Fase 4 – Archivos I/O (0 %)
+### ✅ Fase 4 – Archivos I/O (100 %) **COMPLETA**
 
 ```
-░░░░░░░░░░  (0/5 items)
+██████████████████  (5/5 items)
 ```
 
-Bloqueada parcialmente por §1.5 (formato de epsilon en `.gtk`).
+**Hecho:**
+- `LectorAFD` con tolerancia a comentarios (`#`) y líneas vacías; estado inicial = origen de la primera transición; última definición de aceptación gana.
+- `LectorGTK` con pre-pasada para declarar NT/terminales fuera de orden; NT inicial = NT de la primera línea; mayúsculas = NT, minúsculas = terminales; `epsilon` = vacío.
+- `EscritorAFD` y `EscritorGTK` con el formato del enunciado.
+- `ArchivoFactory` dispatcha por extensión (`.afd`/`.gtk`).
+- 5 recursos de test: `enunciado.afd`, `enunciado.gtk`, `con_comentarios.afd`, `con_comentarios.gtk`, `con_epsilon.gtk`.
+- Tests de ida-vuelta (escribir → leer → evaluar) para ambos formatos.
 
 ### 🟡 Fase 5 – UI Swing (38 %)
 
@@ -257,7 +262,9 @@ Depende de `GeneradorCadenas` (Fase 2) y archivos `.afd/.gtk` (Fase 4).
 ## 🏆 Logros recientes (últimos commits)
 
 ```
-(pendiente commit Fase 3)  ← más reciente
+(pendiente commit Fase 4)  ← más reciente
+2c6f139 docs: actualizar estado/docs a 51% avance (Fases 0-3 completas)
+5b0f296 Fase 3: Conversores AFD↔Gramática + equivalencia (105/105 tests)
 2ae73da docs: actualizar estado/docs a 46% avance (Fases 0-2 completas)
 0b5e1b7 Fase 2: EvaluadorGramatica + GeneradorCadenas + Historial (85/85 tests)
 760c020 docs: agregar README.md completo + LICENSE (MIT)
@@ -270,12 +277,13 @@ d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
 
 ### 🎉 Hitos alcanzados
 
-- 🏅 **Modelo robusto** con 105/105 tests pasando (Fases 1, 2 y 3)
+- 🏅 **Modelo robusto** con 142/142 tests pasando (Fases 1, 2, 3 y 4)
 - 🏅 **Refactor completo** con inmutabilidad profunda y Javadoc
 - 🏅 **Evaluador AFD** reproduce exactamente la ruta del enunciado (`aababb`)
 - 🏅 **Evaluador Gramática** reproduce exactamente la expansión del enunciado (`0011`)
 - 🏅 **GeneradorCadenas + Historial** soportan §1.6 "ambas"
 - 🏅 **Conversiones AFD↔Gramática** con equivalencia verificada (ida-vuelta)
+- 🏅 **Lectores/Escritores .afd/.gtk** con Factory y pruebas de ida-vuelta
 - 🏅 **Documentación completa**: 8 documentos (README + LICENSE + 6 .md)
 - 🏅 **Repo en GitHub** público con SSH configurado persistentemente
 - 🏅 **Stack validado**: JDK 17 + NetBeans + Graphviz + OpenPDF funcionando
@@ -372,11 +380,15 @@ d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
 
 ### 🟡 Fase 4 (siguiente, 4 días)
 
-### 🟡 Fase 4 (4 días)
+### ✅ Fase 4 – completada
 
-- `LectorAFD` + `LectorGTK` con epsilon configurable (asumido `epsilon`).
-- `EscritorAFD` + `EscritorGTK`.
-- Prueba de ida-vuelta: cargar → guardar → cargar.
+1. ✅ `LectorAFD` + `LectorGTK` (con tolerancia a comentarios).
+2. ✅ `EscritorAFD` + `EscritorGTK` (formato del enunciado).
+3. ✅ `ArchivoFactory` con dispatch por extensión.
+4. ✅ Pruebas ida-vuelta para ambos formatos.
+5. ✅ 142/142 tests pasan.
+
+### 🟡 Fase 5 (siguiente, 6 días)
 
 ### 🟡 Fase 5 (6 días)
 
@@ -484,6 +496,7 @@ Si abrís un chat sin contexto, pegá este bloque:
 
 ## 📝 Notas de versión
 
+- **v1.3** (04-oct-2026): Fase 4 completa — `LectorAFD`, `LectorGTK`, `EscritorAFD`, `EscritorGTK`, `ArchivoFactory` + 5 recursos de test + 37 tests nuevos (142/142).
 - **v1.2** (04-oct-2026): Fase 3 completa — `ConversorAFDGramatica`, `ConversorGramaticaAFD` (con estado final extra `F`), `EquivalenciaConversionTest` + 20 tests nuevos (105/105). §1.2 y §1.7 asumidas.
 - **v1.1** (04-oct-2026): Fase 2 completa — `EvaluadorGramatica`, `GeneradorCadenas`, `HistorialEvaluaciones`, `RegistroEvaluacion` + 23 tests nuevos (85/85). Respuestas del catedrático §1.1 y §1.6 integradas; §1.5 asumida.
 - **v1.0** (03-oct-2026): creación inicial con estado al cierre de Fase 1.
