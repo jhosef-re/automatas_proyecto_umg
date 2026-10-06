@@ -72,6 +72,18 @@ public class RepositorioAutomatas {
     public Gramatica obtenerGramatica(String nombre) { return gramaticas.get(nombre); }
 
     /**
+     * @return vista inmutable de todos los nombres registrados (AFDs +
+     *         gramáticas), en orden de inserción. Útil para alimentar listas
+     *         y combos en la UI.
+     */
+    public Set<String> getNombres() {
+        Set<String> todos = new LinkedHashSet<>();
+        todos.addAll(afds.keySet());
+        todos.addAll(gramaticas.keySet());
+        return Collections.unmodifiableSet(todos);
+    }
+
+    /**
      * Elimina todas las entradas registradas. Reservado para uso en tests
      * (<code>@BeforeEach</code>); no invocar en código de producción.
      */
