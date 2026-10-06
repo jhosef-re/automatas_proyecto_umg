@@ -1,15 +1,15 @@
 # Estado del proyecto – Autómatas y Lenguajes Formales
-**Última actualización:** 03-oct-2026 · **Entrega:** 05-nov-2026
+**Última actualización:** 04-oct-2026 · **Entrega:** 05-nov-2026
 
 > Leyenda: ✅ hecho · 🟡 parcial (iniciado pero incompleto) · ❌ pendiente · ⚠️ bloqueado
-> **Fase actual:** Fase 1 ✅ (con refactor). Esperando dudas del catedrático antes de Fase 2.
+> **Fase actual:** Fases 0, 1 y 2 ✅ completas. Pendientes: 3-9.
 
 ---
 
 ## Resumen ejecutivo
-- **Avance global estimado:** ~30 % (Fases 0 y 1 completas + refactor Fase 1; documentación + modelo robusto con tests).
-- **Fase actual en curso:** **pausada** esperando respuesta del catedrático a las dudas de `DUDAS_CONSULTAR.md` antes de arrancar **Fase 2**.
-- **Riesgo principal:** quedan 25 días, 7 fases por delante; `EvaluadorGramatica` y conversión AFD↔Gramática son los más riesgosos (dependientes de la respuesta).
+- **Avance global estimado:** ~43 % (Fases 0, 1 y 2 completas; documentación + modelo robusto + evaluadores + generador con tests).
+- **Fase actual en curso:** **Fase 2 ✅ completa**. `EvaluadorGramatica`, `GeneradorCadenas`, `HistorialEvaluaciones` y tests del ejemplo `0011` listos.
+- **Riesgo principal:** quedan 31 días, 6 fases por delante; Fase 3 (conversiones AFD↔Gramática) sigue dependiendo de §1.2.
 
 ---
 
@@ -45,15 +45,20 @@
 - [x] Refactor post-Fase 1 (auditoría exhaustiva): ver commit `d94cc5c`
 - **Entregable cumplido:** el modelo funciona por consola/tests, sin UI, y es robusto a edge cases.
 
-### Fase 2 – Evaluación de cadenas (12 – 16 oct) · 5 días
+### Fase 2 – Evaluación de cadenas (12 – 16 oct) · 5 días ✅ COMPLETO
 - [x] `servicio/Evaluador.java` (interfaz)
 - [x] `servicio/ResultadoEvaluacion.java`
 - [x] `servicio/EvaluadorAFD.java` (con ejemplo `aababb` listo)
-- [ ] **`servicio/EvaluadorGramatica.java`** (expansión `A>0B>00B>...`)
-- [ ] **`servicio/GeneradorCadenas.java`** (BFS, ≥3 válidas + ≥3 inválidas)
-- [ ] Pruebas que reproduzcan ejemplo `0011` del enunciado
-- [ ] Manejo de recursión por la izquierda y ciclos con epsilon
-- **Entregable pendiente:** pruebas reproduciendo ejemplos del enunciado.
+- [x] **`servicio/EvaluadorGramatica.java`** (expansión `A>0B>00B>...` con sufijo `(epsilon)` para ε-producciones)
+- [x] **`servicio/GeneradorCadenas.java`** (BFS por longitud, ≥3 válidas + ≥3 inválidas)
+- [x] **`servicio/HistorialEvaluaciones.java`** (Singleton thread-safe para §1.6 "evaluadas por el usuario")
+- [x] **`servicio/RegistroEvaluacion.java`** (record inmutable)
+- [x] Validación de **linealidad por derecha** al construir `EvaluadorGramatica` (rechaza con `ValidacionException` gramáticas con NT antes de terminales / NTs múltiples)
+- [x] Pruebas que reproducen ejemplo `0011` del enunciado (`A> 0B> 00B> 001A> 0011A> 0011(epsilon)> 0011`)
+- [x] Manejo de ciclos (poda por estado `NT|prefix` + `MAX_PROFUNDIDAD=100`)
+- [x] Javadoc de `ResultadoEvaluacion` actualizado con sufijo `(epsilon)`
+- [x] `Main` reproduce tanto `aababb` como `0011`
+- **Entregable cumplido:** 85/85 tests pasan; ambos ejemplos del plan reproducidos exactamente.
 
 ### Fase 3 – Conversiones Gramática ↔ AFD (17 – 21 oct) · 5 días
 - [ ] `servicio/ConversorGramaticaAFD.java`
@@ -146,7 +151,7 @@
 
 ```
 Sem 1 (03-11 oct): Fase 0 + Fase 1 + refactor ........ ✅ ✅ ✅
-Sem 2 (12-18 oct): Fase 2 + mitad Fase 3 ............ 🟡 esperando dudas del catedrático
+Sem 2 (12-18 oct): Fase 2 + mitad Fase 3 ............ ✅ (Fase 2) · ❌ (Fase 3 pendiente de §1.2)
 Sem 3 (19-25 oct): Fase 3 + Fase 4 .................. ❌
 Sem 4 (26 oct-01 nov): Fase 5 + arranque Fase 6 ..... ❌
 Sem 5 (02-05 nov): Fase 6 + 7 + 8 (entrega) ......... ❌

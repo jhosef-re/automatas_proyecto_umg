@@ -13,7 +13,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 ![Estado: En desarrollo](https://img.shields.io/badge/Estado-En%20desarrollo-orange?style=for-the-badge)
-![Avance: 33%](https://img.shields.io/badge/Avance-33%25-blue?style=for-the-badge&logo=progress&logoColor=white)
+![Avance: 46%](https://img.shields.io/badge/Avance-46%25-blue?style=for-the-badge&logo=progress&logoColor=white)
 
 ![Último commit](https://img.shields.io/github/last-commit/jhosef-re/automatas_proyecto_umg?style=flat-square&logo=git&logoColor=white)
 ![Lenguaje top](https://img.shields.io/github/languages/top/jhosef-re/automatas_proyecto_umg?style=flat-square&color=ED8B00)
@@ -41,9 +41,9 @@ La aplicación permite:
 - Convertir entre ambos modelos.
 - Generar **reportes PDF** con el grafo (Graphviz), detalle y ejemplos de cadenas válidas/inválidas.
 
-> 📌 **Estado actual:** **33 % completo** (26/78 sub-ítems) · Fase 1 completa (modelo + 62 tests JUnit).
-> 🟡 **Pausado** esperando respuestas del catedrático a 3 preguntas críticas antes de arrancar Fase 2.
-> Fases 2–9 pendientes según el [roadmap](#-roadmap).
+> 📌 **Estado actual:** **46 % completo** (36/78 sub-ítems) · Fases 0, 1 y 2 completas (modelo + 85 tests JUnit).
+> 🟢 Fase 2 lista: `EvaluadorGramatica` + `GeneradorCadenas` + `HistorialEvaluaciones`.
+> Fases 3–9 pendientes según el [roadmap](#-roadmap).
 >
 > 📘 Para el mapa completo del proyecto (desglose por fase, preguntas pendientes, cronograma, riesgos), ver [`CONTEXTO_PROYECTO.md`](./CONTEXTO_PROYECTO.md).
 
@@ -54,12 +54,13 @@ La aplicación permite:
 | Estado | Funcionalidad |
 |:------:|---------------|
 | ✅ | Crear AFD con validación (duplicados, determinismo, sin epsilon) |
-| ✅ | Crear Gramática Regular con validación (lineal izquierda/derecha) |
+| ✅ | Crear Gramática Regular con validación (lineal derecha pura) |
 | ✅ | Evaluar cadenas en AFD con ruta textual (`A, A, a; ...`) |
+| ✅ | Evaluar cadenas en Gramática con expansión (`A>0B>00B>0011(epsilon)>0011`) |
 | ✅ | Repositorio único de AFDs y gramáticas (Singleton) |
-| ✅ | 62 tests JUnit pasando (reglas de validación + casos borde) |
-| 🟡 | Evaluar cadenas en Gramática con expansión (`A>0B>00B>...`) |
-| 🟡 | Generador de cadenas (≥3 válidas + ≥3 inválidas) |
+| ✅ | Generador de cadenas (≥3 válidas + ≥3 inválidas, BFS) |
+| ✅ | Historial de evaluaciones (Singleton thread-safe) |
+| ✅ | 85 tests JUnit pasando (modelo + evaluadores + generador) |
 | ❌ | Conversión AFD ↔ Gramática |
 | ❌ | Cargar/guardar archivos `.afd` y `.gtk` |
 | ❌ | Paneles Swing: Crear AFD/Gramática, Evaluar, Cargar, Guardar, Reportes |
@@ -163,11 +164,11 @@ El proyecto usa **JUnit 5.10** (standalone) con cobertura de:
 ```bash
 $ ./probar.sh test
 ...
-Tests run: 62, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 85, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
 ```
 
-> 📊 **Estado actual:** 62/62 tests pasando.
+> 📊 **Estado actual:** 85/85 tests pasando.
 
 ---
 
@@ -208,7 +209,7 @@ El proyecto fue diseñado para aplicar y poder **explicar en la defensa** los si
 |:----:|--------------------------------------------------------|:------:|
 | **0** | Preparación (instalaciones + repo + dudas)              | ✅ |
 | **1** | Modelo de dominio + validaciones + tests JUnit (62/62)  | ✅ |
-| **2** | `EvaluadorGramatica` + `GeneradorCadenas`              | 🟡 *esperando dudas del catedrático* |
+| **2** | `EvaluadorGramatica` + `GeneradorCadenas` + `Historial` | ✅ |
 | **3** | Conversiones AFD ↔ Gramática                            | ❌ |
 | **4** | Lectores/Escritores `.afd` y `.gtk`                     | ❌ |
 | **5** | UI Swing: 7 paneles + menú                             | 🟡 *parcial* |
