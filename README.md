@@ -232,7 +232,13 @@ Sin embargo, el código se publica bajo [MIT](./LICENSE) para que pueda ser reut
 
 ### 👥 Equipo
 
-- **Jhosef Reyes** · Carné `9390-24-4816` — *modelo, conversiones, UI*
+| # | Integrante | Carné | Rol principal |
+|---|------------|-------|---------------|
+| 1 | **Jhosef Estefano Reyes Román** | `9390-24-4816` | Modelo · Conversores · Parsers |
+| 2 | **Alejandro Leiva García** | `9390-24-7148` | UI Swing (8 paneles) |
+| 3 | **Oscar René Gonzales Rojas** | `9390-24-8224` | Reportes PDF · Manuales · Entrega |
+
+> 📌 Cada integrante debe poder explicar cualquier parte del código en la defensa (ver `Plan_Proyecto_Automatas.md` §Fase 9).
 
 ---
 
@@ -248,14 +254,16 @@ o personales, conservando el aviso de copyright original.
 
 ---
 
-## ✍️ Autor
+## ✍️ Autores
 
 <div align="center">
 
-**Jhosef Reyes** · Carné `9390-24-4816`
-
 🎓 *Universidad Mariano Gálvez*
-📚 *Autómatas y Lenguajes Formales*
+📚 *Autómatas y Lenguajes Formales · Sección A*
+
+**Jhosef Estefano Reyes Román** · `9390-24-4816` — *modelo · parsers*
+**Alejandro Leiva García** · `9390-24-7148` — *UI Swing*
+**Oscar René Gonzales Rojas** · `9390-24-8224` — *reportes · manuales*
 
 </div>
 
