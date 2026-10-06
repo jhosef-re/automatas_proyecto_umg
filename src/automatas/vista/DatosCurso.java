@@ -50,4 +50,23 @@ public final class DatosCurso {
         }
         return sb.toString();
     }
+
+    /**
+     * Lista los integrantes del equipo con su carné completo, uno por línea,
+     * en el formato {@code "Nombre Apellido (Carné 9390-24-XXXX)"}.
+     *
+     * <p>Usado por la Portada y por la portada del PDF de reporte, donde se
+     * quiere mostrar los 3 integrantes del equipo (no solo el carné principal).
+     *
+     * @return texto con los 3 integrantes en el orden de
+     *         {@link #NOMBRES}/{@link #CARNES}
+     */
+    public static String nombresCompletos() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < NOMBRES.length; i++) {
+            sb.append(NOMBRES[i]).append(" (Carné ").append(CARNES[i]).append(')');
+            if (i < NOMBRES.length - 1) sb.append('\n');
+        }
+        return sb.toString();
+    }
 }
