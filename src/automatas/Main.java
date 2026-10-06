@@ -9,16 +9,31 @@ import automatas.modelo.Gramatica;
 import automatas.servicio.EvaluadorAFD;
 import automatas.servicio.EvaluadorGramatica;
 import automatas.servicio.ResultadoEvaluacion;
+import automatas.vista.VentanaPrincipal;
+
+import javax.swing.SwingUtilities;
 
 /**
- * Prueba rápida del modelo: replica los ejemplos del enunciado (AFD con
- * "aababb" y gramática con "0011"). Reemplazar por la lógica del menú
- * principal cuando esté lista la UI.
+ * Punto de entrada de la aplicación.
+ *
+ * <p>Por defecto lanza la GUI Swing ({@link VentanaPrincipal}). Si se
+ * invoca con el argumento {@code --demo}, ejecuta por consola los dos
+ * ejemplos del enunciado (AFD con {@code aababb} y gramática con
+ * {@code 0011}) y termina.
  */
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        // ---- Ejemplo AFD del enunciado ----
+        if (args.length > 0 && "--demo".equals(args[0])) {
+            demoConsola();
+            return;
+        }
+        SwingUtilities.invokeLater(() -> new VentanaPrincipal().setVisible(true));
+    }
+
+    /** Reproduce los dos ejemplos del enunciado y verifica el formato exacto. */
+    private static void demoConsola() throws Exception {
+        // ---- AFD del enunciado ----
         AFD afd = new AFD("ejemplo");
         for (String s : new String[]{"A", "B", "C", "D"}) afd.agregarEstado(s);
         afd.agregarSimbolo("a");
@@ -39,7 +54,7 @@ public class Main {
             throw new AssertionError("La salida del AFD no coincide con el ejemplo del enunciado.");
         }
 
-        // ---- Ejemplo Gramática (Fase 2) ----
+        // ---- Gramática (Fase 2) ----
         Gramatica g = new Gramatica("g0011");
         for (String nt : new String[]{"A", "B"}) g.agregarNoTerminal(nt);
         for (String t : new String[]{"0", "1"}) g.agregarTerminal(t);
