@@ -84,21 +84,26 @@
 - [x] 142/142 tests pasan
 - **Entregable cumplido:** carga/guardado funcionando con archivos de prueba, sin modificarlos. Factory listo para Fase 5.
 
-### Fase 5 – Interfaz gráfica (26 oct – 31 oct) · 6 días
-- [x] `vista/VentanaPrincipal.java` (CardLayout)
-- [x] `vista/PanelPortada.java` (ENTER para continuar)
-- [x] `vista/PanelMenu.java` (estructura con 8 botones, varios `pendiente(...)`)
-- [x] `vista/DatosCurso.java` (placeholders sin completar)
-- [x] `Main.java`
-- [ ] `PanelCrearAFD.java` (modos 1 y 2 con parser)
-- [ ] `PanelCrearGramatica.java`
-- [ ] `PanelEvaluar.java`
-- [ ] `PanelCargar.java` (JFileChooser)
-- [ ] `PanelGuardar.java`
-- [ ] `PanelReportes.java`
-- [ ] Botón **Ayuda** reutilizable en todos los paneles
-- [ ] Mensajes de error claros por cada validación
-- **Entregable pendiente:** todos los flujos del menú recorribles de punta a punta.
+### Fase 5 – Interfaz gráfica (26 oct – 31 oct) · 6 días ✅ COMPLETA (sub-fases 5A + 5B + 5C)
+- [x] `vista/Navegador.java` (interfaz: irA, mostrarInfo, mostrarError, confirmar)
+- [x] `vista/VentanaPrincipal.java` (CardLayout + constantes para 8 pantallas; implementa Navegador)
+- [x] `vista/PanelPortada.java` (ENTER → menú)
+- [x] `vista/PanelMenu.java` (8 botones funcionales)
+- [x] `vista/BotonAyuda.java` (helper: muestra `DatosCurso.textoAyuda()`)
+- [x] `vista/PanelCrearAFD.java` (modo 1 + modo 2 con tabs)
+- [x] `vista/PanelCrearGramatica.java`
+- [x] `vista/PanelEvaluar.java` (con botón "Convertir a…")
+- [x] `vista/PanelCargar.java` (JFileChooser → Factory)
+- [x] `vista/PanelGuardar.java` (lista + JFileChooser destino → Factory)
+- [x] `vista/PanelReportes.java` (Ver Detalle; botón PDF deshabilitado → Fase 6)
+- [x] `util/ParserModo1AFD.java` (línea por línea)
+- [x] `util/ParserModo2AFD.java` (matriz)
+- [x] Botón **Ayuda** en todos los paneles
+- [x] Mensajes de error claros (via `Navegador.mostrarError` con `ValidacionException.getMessage()`)
+- [x] `Main.java`: `--demo` (consola) o sin flag (Swing)
+- [x] `RepositorioAutomatas.getNombres()` (agregado en 5C)
+- [x] 163/163 tests pasan
+- **Entregable cumplido:** todos los flujos del menú recorribles de punta a punta. PDF queda para Fase 6.
 
 ### Fase 6 – Reportes y Graphviz (29 oct – 02 nov) · 4 días
 - [ ] `reporte/GeneradorDot.java`
@@ -162,7 +167,7 @@
 Sem 1 (03-11 oct): Fase 0 + Fase 1 + refactor ........ ✅ ✅ ✅
 Sem 2 (12-18 oct): Fase 2 + Fase 3 .................. ✅ ✅
 Sem 3 (19-25 oct): Fase 4 ........................... ✅
-Sem 4 (26 oct-01 nov): Fase 5 + arranque Fase 6 ..... ❌
+Sem 4 (26 oct-01 nov): Fase 5 ....................... ✅
 Sem 5 (02-05 nov): Fase 6 + 7 + 8 (entrega) ......... ❌
 ```
 

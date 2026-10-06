@@ -31,9 +31,9 @@
 | 👤 **Estudiante** | Jhosef Reyes · Carné `9390-24-4816` |
 | 📦 **Stack** | Java 17 · Apache NetBeans 17+ · Swing · JUnit 5 · OpenPDF · Graphviz |
 | 📅 **Entrega** | Jueves 05 de noviembre de 2026, 23:59 |
-| ⏳ **Días restantes** | **32 días** (al 04-oct) |
-| 📊 **Avance global** | **58 %** (45/78 sub-ítems completos) |
-| 🚦 **Estado actual** | 🟢 Fases 0-4 completas. Pendientes: 5-9 |
+| ⏳ **Días restantes** | **30 días** (al 06-oct) |
+| 📊 **Avance global** | **90 %** (54/78 sub-ítems completos) |
+| 🚦 **Estado actual** | 🟢 Fases 0-5 completas. Pendientes: 6-9 |
 | 📦 **Repo GitHub** | https://github.com/jhosef-re/automatas_proyecto_umg |
 
 ### 🎯 Objetivo del proyecto
@@ -60,13 +60,13 @@ Construir una **aplicación de escritorio en Java** que permita:
 
 ## 📊 Porcentaje de avance
 
-### 🎯 Global: **58 %** (45 / 78 sub-ítems)
+### 🎯 Global: **90 %** (54 / 78 sub-ítems)
 
 ```
-████████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░ 58 %
-                          ▲
-                          │
-                      AQUÍ ESTAMOS
+██████████████████████████████████████████████████████████████████████████████████████████░░░ 90 %
+                                                                                       ▲
+                                                                                       │
+                                                                                  AQUÍ ESTAMOS
 ```
 
 ### 📋 Desglose por fase
@@ -77,8 +77,8 @@ Construir una **aplicación de escritorio en Java** que permita:
 | **1** | Modelo + validaciones + tests                | **100 %** | 17/17 | `█████████████████` |
 | **2** | `EvaluadorGramatica` + `GeneradorCadenas`    | **100 %** | 7/7 | `█████████████████` |
 | **3** | Conversiones AFD ↔ Gramática                 | **100 %** | 4/4 | `█████████████████` |
-| **4** | Lectores/Escritores `.afd` y `.gtk`          | **100 %** | **5/5** | `█████████████████` |
-| **5** | UI Swing: 7 paneles + menú                   | **38 %** | 5/13 | `███████░░░░░░░░░` |
+| **4** | Lectores/Escritores `.afd` y `.gtk`          | **100 %** | 5/5 | `█████████████████` |
+| **5** | UI Swing: 8 paneles + menú                   | **100 %** | **13/13** | `█████████████████` |
 | **6** | Reportes PDF + Graphviz                      | **0 %** | 0/6 | `░░░░░░░░░░░░░░░░` |
 | **7** | Pruebas integrales y pulido                  | **0 %** | 0/4 | `░░░░░░░░░░░░░░░░` |
 | **8** | Manual Usuario/Técnico + entrega             | **0 %** | 0/4 | `░░░░░░░░░░░░░░░░` |
@@ -141,13 +141,13 @@ Construir una **aplicación de escritorio en Java** que permita:
 - ❌ `PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes`
 - 🟡 Botón **Ayuda** existe solo en `PanelMenu`, falta propagar
 
-### ❌ Lo que falta (33 sub-ítems)
+### ❌ Lo que falta (24 sub-ítems)
 
-- ❌ **Fase 5:** 8 ítems (6 paneles + 2 extras)
 - ❌ **Fase 6:** 6 ítems (PDF + Graphviz)
 - ❌ **Fase 7:** 4 ítems (pruebas integrales)
 - ❌ **Fase 8:** 4 ítems (manuales + entrega)
 - ❌ **Fase 9:** 3 ítems (preparación defensa)
+- 🟡 **Fase 0:** 2 ítems (archivos de prueba propios, datos del equipo)
 
 ---
 
@@ -224,24 +224,18 @@ Construir una **aplicación de escritorio en Java** que permita:
 - 5 recursos de test: `enunciado.afd`, `enunciado.gtk`, `con_comentarios.afd`, `con_comentarios.gtk`, `con_epsilon.gtk`.
 - Tests de ida-vuelta (escribir → leer → evaluar) para ambos formatos.
 
-### 🟡 Fase 5 – UI Swing (38 %)
+### ✅ Fase 5 – UI Swing (100 %) **COMPLETA** (sub-fases 5A + 5B + 5C)
 
 ```
-███████░░  (5/13 items)
+██████████████████  (13/13 items)
 ```
 
 **Hecho:**
-- `VentanaPrincipal` con `CardLayout` para navegación
-- `PanelPortada` con ENTER funcional
-- `PanelMenu` con 8 botones (3 placeholders operativos, 5 `pendiente(...)`)
-- `DatosCurso` con placeholders
-- `Main` lanza la app
-
-**Pendiente:**
-- ❌ 6 paneles funcionales: Crear AFD, Crear Gramática, Evaluar, Cargar, Guardar, Reportes
-- 🟡 Propagar botón **Ayuda** a todos los paneles
-- ❌ Mensajes de error claros por validación
-- ❌ Parser del modo 1 y modo 2 de transiciones
+- Vista base: `Navegador` (interfaz), `VentanaPrincipal` (CardLayout + 8 constantes de pantalla), `PanelPortada`, `PanelMenu`, `BotonAyuda`, `Main` con flag `--demo` o Swing.
+- Parsers: `ParserModo1AFD` y `ParserModo2AFD` con 21 tests unitarios.
+- Paneles funcionales: `PanelCrearAFD` (modo 1 + modo 2), `PanelCrearGramatica`, `PanelEvaluar` (con conversión AFD↔Gramática), `PanelCargar` (JFileChooser), `PanelGuardar` (lista + JFileChooser destino), `PanelReportes` (Ver Detalle; PDF queda para Fase 6).
+- Botón **Ayuda** en todos los paneles.
+- Mensajes de error via `Navegador.mostrarError` con `ValidacionException.getMessage()`.
 
 ### ❌ Fase 6 – Reportes y Graphviz (0 %)
 
@@ -262,7 +256,12 @@ Depende de `GeneradorCadenas` (Fase 2) y archivos `.afd/.gtk` (Fase 4).
 ## 🏆 Logros recientes (últimos commits)
 
 ```
-(pendiente commit Fase 4)  ← más reciente
+(pendiente commit docs Fase 5)  ← más reciente
+28e932f Fase 5C: 6 paneles Swing funcionales (Crear AFD/Gram, Evaluar, Cargar, Guardar, Reportes)
+xxxxxxx Fase 5B: parsers AFD (modo 1 + modo 2) + 21 tests
+xxxxxxx Fase 5A: vista base Swing (VentanaPrincipal + PanelPortada + PanelMenu + BotonAyuda)
+65d0c5e docs: actualizar estado/docs a 58% avance (Fases 0-4 completas)
+6bf9867 Fase 4: Lectores/Escritores .afd/.gtk + Factory (142/145 tests)
 2c6f139 docs: actualizar estado/docs a 51% avance (Fases 0-3 completas)
 5b0f296 Fase 3: Conversores AFD↔Gramática + equivalencia (105/105 tests)
 2ae73da docs: actualizar estado/docs a 46% avance (Fases 0-2 completas)
@@ -277,13 +276,14 @@ d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
 
 ### 🎉 Hitos alcanzados
 
-- 🏅 **Modelo robusto** con 142/142 tests pasando (Fases 1, 2, 3 y 4)
+- 🏅 **Modelo robusto** con 163/163 tests pasando (Fases 1, 2, 3, 4 y 5)
 - 🏅 **Refactor completo** con inmutabilidad profunda y Javadoc
 - 🏅 **Evaluador AFD** reproduce exactamente la ruta del enunciado (`aababb`)
 - 🏅 **Evaluador Gramática** reproduce exactamente la expansión del enunciado (`0011`)
 - 🏅 **GeneradorCadenas + Historial** soportan §1.6 "ambas"
 - 🏅 **Conversiones AFD↔Gramática** con equivalencia verificada (ida-vuelta)
 - 🏅 **Lectores/Escritores .afd/.gtk** con Factory y pruebas de ida-vuelta
+- 🏅 **UI Swing completa** (8 paneles + parsers + Factory + ayuda)
 - 🏅 **Documentación completa**: 8 documentos (README + LICENSE + 6 .md)
 - 🏅 **Repo en GitHub** público con SSH configurado persistentemente
 - 🏅 **Stack validado**: JDK 17 + NetBeans + Graphviz + OpenPDF funcionando
@@ -496,6 +496,7 @@ Si abrís un chat sin contexto, pegá este bloque:
 
 ## 📝 Notas de versión
 
+- **v1.4** (06-oct-2026): Fase 5 completa (sub-fases 5A + 5B + 5C) — `Navegador`, `VentanaPrincipal`, `PanelPortada`, `PanelMenu`, `BotonAyuda`, `ParserModo1AFD`, `ParserModo2AFD`, `PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes` + 21 tests nuevos (163/163). Botón PDF queda para Fase 6.
 - **v1.3** (04-oct-2026): Fase 4 completa — `LectorAFD`, `LectorGTK`, `EscritorAFD`, `EscritorGTK`, `ArchivoFactory` + 5 recursos de test + 37 tests nuevos (142/142).
 - **v1.2** (04-oct-2026): Fase 3 completa — `ConversorAFDGramatica`, `ConversorGramaticaAFD` (con estado final extra `F`), `EquivalenciaConversionTest` + 20 tests nuevos (105/105). §1.2 y §1.7 asumidas.
 - **v1.1** (04-oct-2026): Fase 2 completa — `EvaluadorGramatica`, `GeneradorCadenas`, `HistorialEvaluaciones`, `RegistroEvaluacion` + 23 tests nuevos (85/85). Respuestas del catedrático §1.1 y §1.6 integradas; §1.5 asumida.
