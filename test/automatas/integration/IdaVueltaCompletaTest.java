@@ -203,9 +203,9 @@ class IdaVueltaCompletaTest {
         }
     }
 
-    private static <T> void guardar(T modelo, Path archivo) throws IOException, ValidacionException {
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    private static void guardar(Object modelo, Path archivo) throws IOException, ValidacionException {
         Escritor<?> esc = ArchivoFactory.crearEscritor(archivo);
-        @SuppressWarnings({"unchecked", "rawtypes"})
         Escritor raw = (Escritor) esc;
         raw.escribir(modelo, archivo);
     }

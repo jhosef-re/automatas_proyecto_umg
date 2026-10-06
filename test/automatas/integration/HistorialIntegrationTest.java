@@ -9,7 +9,6 @@ import automatas.archivo.Lector;
 import automatas.modelo.AFD;
 import automatas.modelo.Gramatica;
 import automatas.servicio.EvaluadorAFD;
-import automatas.servicio.EvaluadorGramatica;
 import automatas.servicio.HistorialEvaluaciones;
 import automatas.servicio.RegistroEvaluacion;
 
@@ -147,9 +146,4 @@ class HistorialIntegrationTest {
         Lector<?> lector = ArchivoFactory.crearLector(ruta);
         return (Gramatica) lector.leer(ruta);
     }
-
-    @SuppressWarnings("unused")
-    private void unused(EvaluadorAFD ev) { /* placeholder */ }
-    @SuppressWarnings("unused")
-    private void unused(EvaluadorGramatica ev) { /* placeholder */ }
 }

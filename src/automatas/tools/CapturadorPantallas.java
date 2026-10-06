@@ -10,9 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.image.BufferedImage;
 import java.nio.file.Files;
@@ -108,10 +106,5 @@ public class CapturadorPantallas {
             g.dispose();
         }
         return destino;
-    }
-
-    @SuppressWarnings("unused")
-    private static Rectangle bounds(Component c) {
-        return new Rectangle(c.getLocationOnScreen(), new Dimension(c.getWidth(), c.getHeight()));
     }
 }
