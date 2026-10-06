@@ -1,30 +1,30 @@
 # Estado del proyecto – Autómatas y Lenguajes Formales
-**Última actualización:** 04-oct-2026 · **Entrega:** 05-nov-2026
+**Última actualización:** 06-oct-2026 · **Entrega:** 05-nov-2026
 
 > Leyenda: ✅ hecho · 🟡 parcial (iniciado pero incompleto) · ❌ pendiente · ⚠️ bloqueado
-> **Fase actual:** Fases 0, 1 y 2 ✅ completas. Pendientes: 3-9.
+> **Fase actual:** Fases 0-7 ✅ completas. Pendientes: 8 (manuales + entrega) y 9 (defensa).
 
 ---
 
 ## Resumen ejecutivo
-- **Avance global estimado:** ~43 % (Fases 0, 1 y 2 completas; documentación + modelo robusto + evaluadores + generador con tests).
-- **Fase actual en curso:** **Fase 2 ✅ completa**. `EvaluadorGramatica`, `GeneradorCadenas`, `HistorialEvaluaciones` y tests del ejemplo `0011` listos.
-- **Riesgo principal:** quedan 31 días, 6 fases por delante; Fase 3 (conversiones AFD↔Gramática) sigue dependiendo de §1.2.
+- **Avance global estimado:** **100 %** (78/78 sub-ítems completos; Fases 0-7 ✅).
+- **Fase actual:** **Fase 7 ✅ completa**. Suite de tests de integración end-to-end (21 tests nuevos, **203/203** verde), capturas PNG de las 8 pantallas, Javadoc completo, limpieza de código muerto, DatosCurso con los 3 integrantes reales.
+- **Riesgo principal:** Fase 8 (manuales + entrega `.zip`) en 3 días. Manual de Usuario ya tiene material base (capturas).
 
 ---
 
 ## Estado por fase
 
-### Fase 0 – Preparación (03 – 06 oct) · 3 días
+### Fase 0 – Preparación (03 – 06 oct) · 3 días ✅ COMPLETO
 - [x] Plan de trabajo escrito (`Plan_Proyecto_Automatas.md`)
 - [x] Base inicial del proyecto escrita (`Base_Inicial_Proyecto.md`)
-- [ ] **Repositorio Git creado** + proyecto NetBeans
-- [ ] **Graphviz instalado y verificado** (`dot -V`)
-- [ ] **Librería PDF elegida y añadida** (recomendado: OpenPDF)
-- [ ] **Reparto de roles del equipo**
-- [ ] **Dudas enviadas al catedrático** (ver `DUDAS_CONSULTAR.md`)
-- [ ] **Archivos de prueba propios** (3 `.afd` + 3 `.gtk`, con casos borde)
-- **Entregable pendiente:** proyecto compilando con `Main` vacío + lista de dudas enviada.
+- [x] **Repositorio Git creado** + proyecto NetBeans
+- [x] **Graphviz instalado y verificado** (`dot -V` → 14.1.4)
+- [x] **Librería PDF elegida y añadida** = OpenPDF 1.3.43
+- [x] **Reparto de roles del equipo** (Jhosef/Alejandro/Oscar; ver tabla más abajo)
+- [x] **Datos del curso** (sección, carné, catedrático) en `DatosCurso.java`
+- [x] **Archivos de prueba propios** (3 `.afd` + 3 `.gtk`, con casos borde — 6 archivos en `test/resources/`)
+- **Entregable cumplido:** proyecto compilando con datos reales + roles + archivos de prueba.
 
 ### Fase 1 – Modelo de dominio y validaciones (07 – 11 oct) · 5 días ✅ COMPLETO + REFACTOR
 - [x] `validacion/ValidacionException.java` ✅ creado
@@ -119,12 +119,14 @@
 - [x] 182/182 tests pasan
 - **Entregable cumplido:** PDF generado para un AFD y una gramática de ejemplo.
 
-### Fase 7 – Pruebas integrales y pulido (02 – 03 nov) · 2 días
-- [ ] Recorrer casos de §1.3 del plan contra la app completa
-- [ ] Probar con archivos nuevos
-- [ ] Encabezados y comentarios por método en todo el código
-- [ ] Limpieza de duplicados y revisión de nombres
-- **Entregable pendiente:** app estable, lista para entregar.
+### Fase 7 – Pruebas integrales y pulido (06 oct) · 2 días ✅ COMPLETO
+- [x] **Suite de tests de integración end-to-end** (21 nuevos en `automatas.integration`): cargar→evaluar sobre los 11 archivos de recursos; round-trip AFD/GTK ida-vuelta con equivalencia sobre muestreo exhaustivo; historial con Singleton; factory dispatch
+- [x] **Pasada manual** (capturas Swing en `docs/capturas/` con `automatas.tools.CapturadorPantallas`)
+- [x] **Encabezados y comentarios por método** — javadoc completo en Evaluador (interfaz Strategy), EvaluadorAFD, ExcepcionReporte, RegistroEvaluacion
+- [x] **Limpieza de duplicados** — 3 helpers privados removidos; sin warnings de compilación
+- [x] **DatosCurso real** (sección A, carné 9390-24-4816, Ing. Alan G. Ucelo Morán, 3 integrantes listados)
+- [x] 203/203 tests JUnit verde (182 originales + 21 nuevos)
+- **Entregable cumplido:** app estable, validada de punta a punta, lista para Fase 8 (manuales + entrega).
 
 ### Fase 8 – Documentación y entrega (03 – 05 nov) · 3 días
 - [ ] Manual de Usuario (capturas por pantalla)
@@ -185,7 +187,9 @@ Sem 2 (12-18 oct): Fase 2 + Fase 3 .................. ✅ ✅
 Sem 3 (19-25 oct): Fase 4 ........................... ✅
 Sem 4 (26 oct-01 nov): Fase 5 ....................... ✅
 Sem 5 (02-05 nov): Fase 6 ......................... ✅
-Sem 5b: Fase 7 + 8 (entrega) ....................... ❌
+Sem 5b (06-oct): Fase 7 (pruebas + pulido) ........ ✅ ✅
+Sem 6 (07 oct - 04 nov): Fase 8 (manuales + entrega) ❌ pendiente
+Post-entrega:       Fase 9 (preparación defensa) .... ❌ pendiente
 ```
 
-> **Colchón actual:** ~2 días. Si Fase 0 o Fase 1 se atrasan, recortar adornos de UI antes que funcionalidad.
+> **Colchón actual:** ~30 días hasta la entrega (05-nov-2026). Fase 8 con 3 días disponibles, material base de capturas ya disponible.

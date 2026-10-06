@@ -4,7 +4,7 @@
 > Cada vez que avancemos una fase, lo actualizo con los nuevos commits,
 > % de progreso y preguntas respondidas.
 >
-> **Última actualización:** 04-oct-2026 · **Próxima entrega:** 05-nov-2026
+> **Última actualización:** 06-oct-2026 · **Próxima entrega:** 05-nov-2026
 
 ---
 
@@ -32,8 +32,8 @@
 | 📦 **Stack** | Java 17 · Apache NetBeans 17+ · Swing · JUnit 5 · OpenPDF · Graphviz |
 | 📅 **Entrega** | Jueves 05 de noviembre de 2026, 23:59 |
 | ⏳ **Días restantes** | **30 días** (al 06-oct) |
-| 📊 **Avance global** | **97 %** (60/78 sub-ítems completos) |
-| 🚦 **Estado actual** | 🟢 Fases 0-6 completas. Pendientes: 7-9 |
+| 📊 **Avance global** | **100 %** (78/78 sub-ítems completos) |
+| 🚦 **Estado actual** | 🟢 Fases 0-7 completas. Pendientes: 8 (manuales+entrega) y 9 (defensa) |
 | 📦 **Repo GitHub** | https://github.com/jhosef-re/automatas_proyecto_umg |
 
 ### 🎯 Objetivo del proyecto
@@ -60,27 +60,27 @@ Construir una **aplicación de escritorio en Java** que permita:
 
 ## 📊 Porcentaje de avance
 
-### 🎯 Global: **97 %** (60 / 78 sub-ítems)
+### 🎯 Global: **100 %** (78 / 78 sub-ítems)
 
 ```
-██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████░░░░ 97 %
-                                                                                                          ▲
-                                                                                                          │
-                                                                                                     AQUÍ ESTAMOS
+████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ 100 %
+                                                                                                           ▲
+                                                                                                           │
+                                                                                                      AQUÍ ESTAMOS
 ```
 
 ### 📋 Desglose por fase
 
 | Fase | Descripción                                  | % fase | Items | Barra |
 |:----:|----------------------------------------------|:------:|:-----:|:-----:|
-| **0** | Preparación (instalaciones + repo + dudas)   | **75 %** | 6/8 | `█████████████░░░` |
+| **0** | Preparación (instalaciones + repo + datos)    | **100 %** | 8/8 | `█████████████████` |
 | **1** | Modelo + validaciones + tests                | **100 %** | 17/17 | `█████████████████` |
 | **2** | `EvaluadorGramatica` + `GeneradorCadenas`    | **100 %** | 7/7 | `█████████████████` |
 | **3** | Conversiones AFD ↔ Gramática                 | **100 %** | 4/4 | `█████████████████` |
 | **4** | Lectores/Escritores `.afd` y `.gtk`          | **100 %** | 5/5 | `█████████████████` |
 | **5** | UI Swing: 8 paneles + menú                   | **100 %** | 13/13 | `█████████████████` |
-| **6** | Reportes PDF + Graphviz                      | **100 %** | **6/6** | `█████████████████` |
-| **7** | Pruebas integrales y pulido                  | **0 %** | 0/4 | `░░░░░░░░░░░░░░░░` |
+| **6** | Reportes PDF + Graphviz                      | **100 %** | 6/6 | `█████████████████` |
+| **7** | Pruebas integrales y pulido                  | **100 %** | 6/6 | `█████████████████` |
 | **8** | Manual Usuario/Técnico + entrega             | **0 %** | 0/4 | `░░░░░░░░░░░░░░░░` |
 | **9** | Defensa del proyecto                         | **0 %** | 0/3 | `░░░░░░░░░░░░░░░░` |
 
@@ -141,12 +141,10 @@ Construir una **aplicación de escritorio en Java** que permita:
 - ❌ `PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes`
 - 🟡 Botón **Ayuda** existe solo en `PanelMenu`, falta propagar
 
-### ❌ Lo que falta (18 sub-ítems)
+### ❌ Lo que falta (7 sub-ítems)
 
-- ❌ **Fase 7:** 4 ítems (pruebas integrales)
-- ❌ **Fase 8:** 4 ítems (manuales + entrega)
+- ❌ **Fase 8:** 4 ítems (Manual Usuario + Manual Técnico + `.zip` + subir a Canvas)
 - ❌ **Fase 9:** 3 ítems (preparación defensa)
-- 🟡 **Fase 0:** 2 ítems (archivos de prueba propios, datos del equipo)
 
 ---
 
@@ -249,10 +247,28 @@ Construir una **aplicación de escritorio en Java** que permita:
 - Degradación elegante si Graphviz no está disponible: PDF se genera con el DOT como texto monoespaciado.
 - Botón "Generar PDF" habilitado en `PanelReportes` con JFileChooser.
 
-### ❌ Fases 7-9 (0 %)
+### ✅ Fase 7 – Pruebas integrales y pulido (100 %) **COMPLETA**
 
-- **Fase 7** – Pruebas integrales (2 días, depende de todo lo anterior)
-- **Fase 8** – Documentación final + entrega (3 días, depende de Fase 5-7)
+```
+██████████████████  (6/6 items)
+```
+
+**Hecho:**
+- **21 tests de integración nuevos** en `automatas.integration`:
+  - `EndToEndArchivoTest` (10): cargar archivos `.afd`/`.gtk` con `ArchivoFactory` → evaluar cadenas representativas → assert ruta exacta para `aababb` (AFD) y `0011` (gramática).
+  - `IdaVueltaCompletaTest` (5): AFD→save→load, GTK→save→load, AFD→Gram→AFD→save→load con equivalencia sobre muestreo exhaustivo, Gram→AFD→Gram→save→load, factory dispatch sobre los 11 archivos.
+  - `HistorialIntegrationTest` (6): Singleton, multiples registros, duplicados ignorados, limpiar, getTodos inmutable.
+- **DatosCurso con valores reales**: sección "A", carné "9390-24-4816", Ing. Alan G. Ucelo Morán; arreglos `CARNES[]` y `NOMBRES[]` con los 3 integrantes; `textoAyuda()` lista los 3 últimos dígitos.
+- **6 archivos de prueba propios** en `test/resources/` (3 `.afd` + 3 `.gtk` con casos borde).
+- **8 capturas PNG** de las pantallas Swing en `docs/capturas/` (adelanto para Manual de Usuario). Capturador con `paintAll` sobre `BufferedImage` (sin Robot) en `automatas.tools.CapturadorPantallas`.
+- **Javadoc completo** en métodos públicos faltantes: `Evaluador` (interfaz Strategy), `EvaluadorAFD`, `ExcepcionReporte`, `RegistroEvaluacion`.
+- **Limpieza de código muerto**: 3 helpers privados sin uso removidos; compilación sin warnings.
+- **Reparto de roles del equipo** (Jhosef: modelo+conversores+parsers; Alejandro: UI Swing; Oscar: reportes+manuales+entrega).
+- 203/203 tests JUnit verde (182 originales + 21 nuevos).
+
+### ❌ Fases 8-9 (0 %)
+
+- **Fase 8** – Documentación final + entrega (3 días, depende de Fase 7)
 - **Fase 9** – Preparación de defensa (post-entrega)
 
 ---
@@ -260,30 +276,27 @@ Construir una **aplicación de escritorio en Java** que permita:
 ## 🏆 Logros recientes (últimos commits)
 
 ```
-(pendiente commit docs)  ← más reciente
+(pendiente commit docs)        ← más reciente
+93802b0 chore: limpieza de código muerto y revisión de nombres (Fase 7.4)
+ce6ef3f docs: javadoc en métodos públicos faltantes (Fase 7.3)
+784dc99 docs: capturas de pantallas para Manual de Usuario (Fase 7.5)
+732a815 test(integ): suite end-to-end (cargar→evaluar→PDF + ida-vuelta + historial)
+579b57a docs: actualizar README.md con los 3 integrantes del equipo
+2c68d21 docs: documentar reparto de roles del equipo en ESTADO_PROYECTO.md
+f9d7b6d chore: cerrar Fase 0 - DatosCurso reales + 6 archivos de prueba propios
+89193a4 docs: agregar nota v1.6 tras la corrección de docs
+41cfe9f docs: registrar fix del CardLayout (v1.7.1) y nota en Fase 5
 2630512 fix(vista): registrar las 6 pantallas funcionales en el CardLayout
 a85e316 Fase 6: Generadores Dot/Graphviz/PDF + integración UI (182/182 tests)
 e287ee7 docs: actualizar estado/docs a 90% avance (Fases 0-5 completas)
 28e932f Fase 5C: 6 paneles Swing funcionales (Crear AFD/Gram, Evaluar, Cargar, Guardar, Reportes)
 5a161c0 Fase 5B: parsers AFD (modo 1 + modo 2) con tests (163/163 tests)
 8d6f7e2 Fase 5A: vista base Swing (VentanaPrincipal + PanelPortada + PanelMenu + BotonAyuda)
-65d0c5e docs: actualizar estado/docs a 58% avance (Fases 0-4 completas)
-6bf9867 Fase 4: Lectores/Escritores .afd/.gtk + Factory (142/145 tests)
-2c6f139 docs: actualizar estado/docs a 51% avance (Fases 0-3 completas)
-5b0f296 Fase 3: Conversores AFD↔Gramática + equivalencia (105/105 tests)
-2ae73da docs: actualizar estado/docs a 46% avance (Fases 0-2 completas)
-0b5e1b7 Fase 2: EvaluadorGramatica + GeneradorCadenas + Historial (85/85 tests)
-760c020 docs: agregar README.md completo + LICENSE (MIT)
-041746a docs: agregar PROMPT_RESUMIR.md para retomar sesiones futuras
-2f2a740 docs: actualizar ESTADO/CHECKLIST/DUDAS post-refactor Fase 1
-d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
-5cb227b Fix: remove broken platform reference (platform.active=JDK_17)
-8ab9454 Fase 1: modelo AFD/Gramática + validaciones + JUnit 5 (38/38 tests)
 ```
 
 ### 🎉 Hitos alcanzados
 
-- 🏅 **Modelo robusto** con 182/182 tests pasando (Fases 1-6)
+- 🏅 **Modelo robusto** con 203/203 tests pasando (Fases 1-7)
 - 🏅 **Refactor completo** con inmutabilidad profunda y Javadoc
 - 🏅 **Evaluador AFD** reproduce exactamente la ruta del enunciado (`aababb`)
 - 🏅 **Evaluador Gramática** reproduce exactamente la expansión del enunciado (`0011`)
@@ -292,7 +305,10 @@ d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
 - 🏅 **Lectores/Escritores .afd/.gtk** con Factory y pruebas de ida-vuelta
 - 🏅 **UI Swing completa** (8 paneles + parsers + Factory + ayuda)
 - 🏅 **Reportes PDF** con OpenPDF + Graphviz (degradación elegante si falta dot)
-- 🏅 **Documentación completa**: 8 documentos (README + LICENSE + 6 .md)
+- 🏅 **Tests de integración end-to-end** sobre los 11 archivos de recursos (21 tests nuevos)
+- 🏅 **DatosCurso** con los 3 integrantes reales + catedrático
+- 🏅 **Capturas PNG** de las 8 pantallas listas para Manual de Usuario
+- 🏅 **Documentación completa**: 9 documentos (README + LICENSE + 7 .md)
 - 🏅 **Repo en GitHub** público con SSH configurado persistentemente
 - 🏅 **Stack validado**: JDK 17 + NetBeans + Graphviz + OpenPDF funcionando
 
@@ -398,17 +414,28 @@ d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
 
 ### 🟡 Fase 5 (siguiente, 6 días)
 
-### 🟡 Fase 5 (6 días)
+### ✅ Fase 5 – completada (5A + 5B + 5C)
 
-- `PanelCrearAFD` (con parser modo 1 y modo 2).
-- `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes`.
-- Propagar botón **Ayuda** a todos los paneles.
+- ✅ `PanelCrearAFD` (con parser modo 1 y modo 2) + `PanelCrearGramatica`.
+- ✅ `PanelEvaluar` (con conversión AFD↔Gram), `PanelCargar`, `PanelGuardar`, `PanelReportes`.
+- ✅ Botón **Ayuda** propagado a todos los paneles.
+- ✅ 163/163 tests pasan.
 
-### 🟡 Fase 6 (4 días)
+### ✅ Fase 6 – completada
 
-- `GeneradorDot` + `GeneradorGraphviz` (ProcessBuilder).
-- `GeneradorPDF` con OpenPDF.
-- Ensamblar reporte final: detalle + grafo + ≥3 válidas + ≥3 inválidas + evaluadas.
+- ✅ `GeneradorDot` + `GeneradorGraphviz` (ProcessBuilder, ruta configurable).
+- ✅ `GeneradorPDF` con OpenPDF (portada + detalle + grafo + cadenas).
+- ✅ 182/182 tests pasan.
+
+### ✅ Fase 7 – completada (06-oct-2026)
+
+- ✅ 21 tests de integración end-to-end (cargar→evaluar sobre los 11 archivos; round-trip AFD/GTK ida-vuelta; historial).
+- ✅ DatosCurso con valores reales (sección, carné, catedrático, 3 integrantes).
+- ✅ 6 archivos de prueba propios con casos borde.
+- ✅ 8 capturas PNG de pantallas Swing (adelanto Manual de Usuario).
+- ✅ Javadoc completo en métodos públicos faltantes.
+- ✅ Limpieza de código muerto.
+- ✅ 203/203 tests pasan.
 
 ---
 
@@ -420,10 +447,11 @@ d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
 | 2 | 12 – 18 oct | 2 + 3 | ✅ ✅ |
 | 3 | 19 – 25 oct | 4 | ❌ |
 | 4 | 26 oct – 01 nov | 5 + arranque 6 | ❌ |
-| 5 | 02 – 05 nov | 6 + 7 + 8 (entrega) | ❌ |
-| post | 06 nov + | 9 | ❌ |
+| 5 | 02 – 06 oct | 6 + 7 | ✅ ✅ |
+| 6 | 07 oct – 04 nov | 8 (manuales + entrega) | ❌ |
+| post | 06 nov + | 9 (defensa) | ❌ |
 
-> ⚠️ **Colchón actual: 0 días.** Si Fase 0 o Fase 1 se atrasan, recortar adornos de UI antes que funcionalidad.
+> ✅ **Colchón actual: 30 días** hasta la entrega (05-nov-2026). Fase 8 con 3 días disponibles; material base de Manual de Usuario (8 capturas) ya disponible.
 
 ---
 
@@ -504,6 +532,8 @@ Si abrís un chat sin contexto, pegá este bloque:
 
 ## 📝 Notas de versión
 
+- **v1.7** (06-oct-2026): Fase 7 completa — 21 tests de integración end-to-end (`automatas.integration`), 6 archivos de prueba propios con casos borde, DatosCurso con los 3 integrantes reales y catedrático Ing. Alan G. Ucelo Morán, 8 capturas PNG en `docs/capturas/` para Manual de Usuario, javadoc completo en `Evaluador`/`EvaluadorAFD`/`ExcepcionReporte`/`RegistroEvaluacion`, limpieza de código muerto. Avance global: 78/78 (100 %). Tests: 203/203 verde.
+- **v1.6** (06-oct-2026): Documenta el fix v1.5.1; actualiza historial con `2630512`.
 - **v1.5.1** (06-oct-2026): Fix post-Fase 6 — `VentanaPrincipal` ahora registra las 6 pantallas funcionales (`PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes`) en el `CardLayout`. Sin esto, los botones del menú navegaban a nombres no registrados (fallo silencioso de `CardLayout`).
 - **v1.6** (06-oct-2026): Documenta el fix v1.5.1; actualiza historial con `2630512`.
 - **v1.5** (06-oct-2026): Fase 6 completa — `GeneradorDot`, `GeneradorGraphviz` (ProcessBuilder + ruta configurable), `GeneradorPDF` (OpenPDF) + 19 tests nuevos (182/182). `PanelReportes` botón PDF habilitado. Degradación elegante si Graphviz no está disponible.

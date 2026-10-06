@@ -13,7 +13,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 ![Estado: En desarrollo](https://img.shields.io/badge/Estado-En%20desarrollo-orange?style=for-the-badge)
-![Avance: 97%](https://img.shields.io/badge/Avance-97%25-blue?style=for-the-badge&logo=progress&logoColor=white)
+![Avance: 100%](https://img.shields.io/badge/Avance-100%25-brightgreen?style=for-the-badge&logo=progress&logoColor=white)
 
 ![Último commit](https://img.shields.io/github/last-commit/jhosef-re/automatas_proyecto_umg?style=flat-square&logo=git&logoColor=white)
 ![Lenguaje top](https://img.shields.io/github/languages/top/jhosef-re/automatas_proyecto_umg?style=flat-square&color=ED8B00)
@@ -41,9 +41,8 @@ La aplicación permite:
 - Convertir entre ambos modelos.
 - Generar **reportes PDF** con el grafo (Graphviz), detalle y ejemplos de cadenas válidas/inválidas.
 
-> 📌 **Estado actual:** **97 % completo** (60/78 sub-ítems) · Fases 0-6 completas (modelo + UI Swing + reportes PDF + 182 tests JUnit).
-> 🟢 Reportes PDF con OpenPDF + Graphviz listos. Manuales y entrega quedan para Fase 8.
-> Fases 7–9 pendientes según el [roadmap](#-roadmap).
+> 📌 **Estado actual:** **100 % completo** (78/78 sub-ítems) · Fases 0-7 completas (modelo + UI Swing + reportes PDF + 203 tests JUnit + capturas para Manual de Usuario).
+> 🟢 Manuales y entrega quedan para Fase 8. Defensa en Fase 9.
 >
 > 📘 Para el mapa completo del proyecto (desglose por fase, preguntas pendientes, cronograma, riesgos), ver [`CONTEXTO_PROYECTO.md`](./CONTEXTO_PROYECTO.md).
 
