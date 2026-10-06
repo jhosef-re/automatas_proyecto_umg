@@ -31,10 +31,19 @@ public final class RegistroEvaluacion {
         this.valida = valida;
     }
 
+    /** @return el nombre del AFD o gramática evaluado. */
     public String getNombreModelo() { return nombreModelo; }
+
+    /** @return la cadena que fue evaluada. */
     public String getCadena() { return cadena; }
+
+    /** @return {@code true} si la cadena es aceptada por el modelo. */
     public boolean esValida() { return valida; }
 
+    /**
+     * @return representación textual con formato
+     *         {@code "modelo :: 'cadena' -> VÁLIDA/INVÁLIDA"}.
+     */
     @Override
     public String toString() {
         return nombreModelo + " :: '" + cadena + "' -> " + (valida ? "VÁLIDA" : "INVÁLIDA");

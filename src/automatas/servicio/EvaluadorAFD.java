@@ -19,6 +19,10 @@ public class EvaluadorAFD implements Evaluador {
 
     private final AFD afd;
 
+    /**
+     * @param afd AFD a evaluar (no puede ser null)
+     * @throws IllegalArgumentException si {@code afd} es null
+     */
     public EvaluadorAFD(AFD afd) {
         if (afd == null)
             throw new IllegalArgumentException("El AFD no puede ser null");

@@ -12,10 +12,18 @@ package automatas.reporte;
  */
 public class ExcepcionReporte extends RuntimeException {
 
+    /**
+     * @param mensaje descripción del error (visible para el usuario)
+     */
     public ExcepcionReporte(String mensaje) {
         super(mensaje);
     }
 
+    /**
+     * @param mensaje descripción del error
+     * @param causa   excepción original (p. ej. {@code IOException} al
+     *                ejecutar {@code dot})
+     */
     public ExcepcionReporte(String mensaje, Throwable causa) {
         super(mensaje, causa);
     }
