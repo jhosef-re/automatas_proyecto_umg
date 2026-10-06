@@ -260,7 +260,8 @@ Construir una **aplicación de escritorio en Java** que permita:
 ## 🏆 Logros recientes (últimos commits)
 
 ```
-(pendiente commit docs Fase 6)  ← más reciente
+(pendiente commit docs)  ← más reciente
+2630512 fix(vista): registrar las 6 pantallas funcionales en el CardLayout
 a85e316 Fase 6: Generadores Dot/Graphviz/PDF + integración UI (182/182 tests)
 e287ee7 docs: actualizar estado/docs a 90% avance (Fases 0-5 completas)
 28e932f Fase 5C: 6 paneles Swing funcionales (Crear AFD/Gram, Evaluar, Cargar, Guardar, Reportes)
@@ -503,6 +504,7 @@ Si abrís un chat sin contexto, pegá este bloque:
 
 ## 📝 Notas de versión
 
+- **v1.5.1** (06-oct-2026): Fix post-Fase 6 — `VentanaPrincipal` ahora registra las 6 pantallas funcionales (`PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes`) en el `CardLayout`. Sin esto, los botones del menú navegaban a nombres no registrados (fallo silencioso de `CardLayout`).
 - **v1.5** (06-oct-2026): Fase 6 completa — `GeneradorDot`, `GeneradorGraphviz` (ProcessBuilder + ruta configurable), `GeneradorPDF` (OpenPDF) + 19 tests nuevos (182/182). `PanelReportes` botón PDF habilitado. Degradación elegante si Graphviz no está disponible.
 - **v1.4** (06-oct-2026): Fase 5 completa (sub-fases 5A + 5B + 5C) — `Navegador`, `VentanaPrincipal`, `PanelPortada`, `PanelMenu`, `BotonAyuda`, `ParserModo1AFD`, `ParserModo2AFD`, `PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes` + 21 tests nuevos (163/163). Botón PDF queda para Fase 6.
 - **v1.3** (04-oct-2026): Fase 4 completa — `LectorAFD`, `LectorGTK`, `EscritorAFD`, `EscritorGTK`, `ArchivoFactory` + 5 recursos de test + 37 tests nuevos (142/142).

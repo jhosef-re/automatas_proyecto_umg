@@ -103,6 +103,7 @@
 - [x] `Main.java`: `--demo` (consola) o sin flag (Swing)
 - [x] `RepositorioAutomatas.getNombres()` (agregado en 5C)
 - [x] 163/163 tests pasan
+- [x] **Fix post-5C (commit `2630512`):** `VentanaPrincipal` registra las 6 pantallas funcionales en el `CardLayout`. Sin el fix, los botones del menú navegaban a nombres no registrados y `CardLayout` fallaba silenciosamente.
 - **Entregable cumplido:** todos los flujos del menú recorribles de punta a punta. PDF queda para Fase 6.
 
 ### Fase 6 – Reportes y Graphviz (29 oct – 02 nov) · 4 días ✅ COMPLETO
