@@ -6,7 +6,7 @@
 
 | | |
 |---|---|
-| **Versión** | 1.0 (Fase 8 — entrega final) |
+| **Versión** | 1.1 (release v1.0.1) |
 | **Stack** | Java 17 · Swing · OpenPDF · JUnit 5 |
 | **Curso** | Autómatas y Lenguajes Formales |
 | **Catedrático** | Inge. Alan G. Ucelo Morán |
@@ -96,14 +96,17 @@ Click derecho sobre el proyecto → Run (F6)
 
 ## 3. Pantalla principal — Portada
 
-Al abrir la aplicación se muestra la **portada** con los datos del curso:
+Al abrir la aplicación se muestra la **portada** con los datos del curso y los integrantes del equipo:
 
 ![Portada](capturas/01_portada.png)
 
 - **Curso:** *Autómatas y Lenguajes Formales*
 - **Sección:** *A*
-- **Carné del equipo:** *9390-24-4816* (Jhosef Estefano Reyes Román)
 - **Catedrático:** *Inge. Alan G. Ucelo Morán*
+- **Integrantes:**
+  - Jhosef Estefano Reyes Román (Carné 9390-24-4816)
+  - Alejandro Leiva García (Carné 9390-24-7148)
+  - Oscar René Gonzales Rojas (Carné 9390-24-8224)
 
 Presionar **ENTER** (o esperar unos instantes) para acceder al menú principal.
 
