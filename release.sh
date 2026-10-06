@@ -14,7 +14,7 @@ BUILD="build"
 OPENPDF="$LIB/openpdf-1.3.43.jar"
 JUNIT="$LIB/junit-platform-console-standalone-1.10.2.jar"
 
-VERSION="1.0"
+VERSION="1.0.1"
 DATE=$(date +%Y-%m-%d)
 OUT="dist/ProyectoAutomatas_v${VERSION}_${DATE}.zip"
 
