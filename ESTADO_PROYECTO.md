@@ -60,12 +60,16 @@
 - [x] `Main` reproduce tanto `aababb` como `0011`
 - **Entregable cumplido:** 85/85 tests pasan; ambos ejemplos del plan reproducidos exactamente.
 
-### Fase 3 – Conversiones Gramática ↔ AFD (17 – 21 oct) · 5 días
-- [ ] `servicio/ConversorGramaticaAFD.java`
-- [ ] `servicio/ConversorAFDGramatica.java`
-- [ ] Verificación de equivalencia entre ambos modelos
-- [ ] Decisión sobre gramáticas no determinísticas (error vs. subconjuntos)
-- **Entregable pendiente:** conversiones probadas en ambas direcciones.
+### Fase 3 – Conversiones Gramática ↔ AFD (17 – 21 oct) · 5 días ✅ COMPLETO
+- [x] `servicio/ConversorAFDGramatica.java` (NT = estado; `δ(A,a)=B` → `A > a B`; aceptación → `> epsilon`)
+- [x] `servicio/ConversorGramaticaAFD.java` (NT = estado; `A > t B` → `δ(A,t)=B`; `A > t` → transición al estado final extra `F`; `A > epsilon` → estado de aceptación)
+- [x] Estado final extra `F` (creado solo si hace falta; `F#0`, `F#1`… si colisiona con un NT)
+- [x] Validación fail-fast de derecha-linealidad reusada de `EvaluadorGramatica`
+- [x] Decisión sobre gramáticas no determinísticas: `ValidacionException` (fail-fast)
+- [x] Decisión sobre multi-terminal `A > t1 t2 B`: `ValidacionException` (fail-fast)
+- [x] Tests de equivalencia (5): AFD↔Gramática en ambas direcciones, ida-vuelta AFD→Gram→AFD, ida-vuelta Gram→AFD→Gram, múltiples AFDs distintos
+- [x] 105/105 tests pasan
+- **Entregable cumplido:** conversiones probadas en ambas direcciones con casos del enunciado + verificación de equivalencia sobre muestreo exhaustivo.
 
 ### Fase 4 – Archivos de entrada y salida (22 – 25 oct) · 4 días
 - [ ] `archivo/LectorAFD.java` (estado inicial = primera línea, última aceptación gana)
@@ -151,8 +155,8 @@
 
 ```
 Sem 1 (03-11 oct): Fase 0 + Fase 1 + refactor ........ ✅ ✅ ✅
-Sem 2 (12-18 oct): Fase 2 + mitad Fase 3 ............ ✅ (Fase 2) · ❌ (Fase 3 pendiente de §1.2)
-Sem 3 (19-25 oct): Fase 3 + Fase 4 .................. ❌
+Sem 2 (12-18 oct): Fase 2 + Fase 3 .................. ✅ ✅
+Sem 3 (19-25 oct): Fase 4 (inicio) .................. ❌
 Sem 4 (26 oct-01 nov): Fase 5 + arranque Fase 6 ..... ❌
 Sem 5 (02-05 nov): Fase 6 + 7 + 8 (entrega) ......... ❌
 ```

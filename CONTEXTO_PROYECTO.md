@@ -32,8 +32,8 @@
 | 📦 **Stack** | Java 17 · Apache NetBeans 17+ · Swing · JUnit 5 · OpenPDF · Graphviz |
 | 📅 **Entrega** | Jueves 05 de noviembre de 2026, 23:59 |
 | ⏳ **Días restantes** | **32 días** (al 04-oct) |
-| 📊 **Avance global** | **46 %** (36/78 sub-ítems completos) |
-| 🚦 **Estado actual** | 🟢 Fases 0-2 completas. Pendientes: 3-9 |
+| 📊 **Avance global** | **51 %** (40/78 sub-ítems completos) |
+| 🚦 **Estado actual** | 🟢 Fases 0-3 completas. Pendientes: 4-9 |
 | 📦 **Repo GitHub** | https://github.com/jhosef-re/automatas_proyecto_umg |
 
 ### 🎯 Objetivo del proyecto
@@ -60,13 +60,13 @@ Construir una **aplicación de escritorio en Java** que permita:
 
 ## 📊 Porcentaje de avance
 
-### 🎯 Global: **46 %** (36 / 78 sub-ítems)
+### 🎯 Global: **51 %** (40 / 78 sub-ítems)
 
 ```
-████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 46 %
-                  ▲
-                  │
-              AQUÍ ESTAMOS
+████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 51 %
+                       ▲
+                       │
+                   AQUÍ ESTAMOS
 ```
 
 ### 📋 Desglose por fase
@@ -75,8 +75,8 @@ Construir una **aplicación de escritorio en Java** que permita:
 |:----:|----------------------------------------------|:------:|:-----:|:-----:|
 | **0** | Preparación (instalaciones + repo + dudas)   | **75 %** | 6/8 | `█████████████░░░` |
 | **1** | Modelo + validaciones + tests                | **100 %** | 17/17 | `█████████████████` |
-| **2** | `EvaluadorGramatica` + `GeneradorCadenas`    | **100 %** | **7/7** | `█████████████████` |
-| **3** | Conversiones AFD ↔ Gramática                 | **0 %** | 0/4 | `░░░░░░░░░░░░░░░░` |
+| **2** | `EvaluadorGramatica` + `GeneradorCadenas`    | **100 %** | 7/7 | `█████████████████` |
+| **3** | Conversiones AFD ↔ Gramática                 | **100 %** | **4/4** | `█████████████████` |
 | **4** | Lectores/Escritores `.afd` y `.gtk`          | **0 %** | 0/5 | `░░░░░░░░░░░░░░░░` |
 | **5** | UI Swing: 7 paneles + menú                   | **38 %** | 5/13 | `███████░░░░░░░░░` |
 | **6** | Reportes PDF + Graphviz                      | **0 %** | 0/6 | `░░░░░░░░░░░░░░░░` |
@@ -141,9 +141,8 @@ Construir una **aplicación de escritorio en Java** que permita:
 - ❌ `PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes`
 - 🟡 Botón **Ayuda** existe solo en `PanelMenu`, falta propagar
 
-### ❌ Lo que falta (42 sub-ítems)
+### ❌ Lo que falta (38 sub-ítems)
 
-- ❌ **Fase 3:** 4 ítems (conversiones — depende de §1.2)
 - ❌ **Fase 4:** 5 ítems (lectores/escritores — §1.5 asumido como `epsilon`)
 - ❌ **Fase 5:** 8 ítems (6 paneles + 2 extras)
 - ❌ **Fase 6:** 6 ítems (PDF + Graphviz)
@@ -199,13 +198,18 @@ Construir una **aplicación de escritorio en Java** que permita:
 - Pruebas del ejemplo `0011` reproducen exactamente `A> 0B> 00B> 001A> 0011A> 0011(epsilon)> 0011`
 - `Main` ejecuta ambos ejemplos (`aababb` y `0011`)
 
-### ❌ Fase 3 – Conversiones (0 %)
+### ✅ Fase 3 – Conversiones (100 %) **COMPLETA**
 
 ```
-░░░░░░░░░░  (0/4 items)
+██████████████████  (4/4 items)
 ```
 
-Bloqueada por §1.2 (estado final extra en Gramática → AFD).
+**Hecho:**
+- `ConversorAFDGramatica`: NT = estado, `δ(A,a)=B` → `A > a B`, aceptación → `> epsilon`.
+- `ConversorGramaticaAFD`: NT = estado, `A > t B` → `δ(A,t)=B`, `A > t` → transición al estado final extra `F` (creado solo si hace falta; `F#0`, `F#1`… si colisiona con un NT existente), `A > epsilon` → estado de aceptación.
+- Validación fail-fast de derecha-linealidad reusada de `EvaluadorGramatica`.
+- Decisiones documentadas: gramáticas no deterministas y multi-terminal lanzan `ValidacionException`.
+- Tests de equivalencia (5): AFD↔Gramática en ambas direcciones, ida-vuelta AFD→Gram→AFD, ida-vuelta Gram→AFD→Gram, múltiples AFDs distintos (sampling exhaustivo de cadenas ≤ longitud 4).
 
 ### ❌ Fase 4 – Archivos I/O (0 %)
 
@@ -253,7 +257,9 @@ Depende de `GeneradorCadenas` (Fase 2) y archivos `.afd/.gtk` (Fase 4).
 ## 🏆 Logros recientes (últimos commits)
 
 ```
-(pendiente commit Fase 2)  ← más reciente
+(pendiente commit Fase 3)  ← más reciente
+2ae73da docs: actualizar estado/docs a 46% avance (Fases 0-2 completas)
+0b5e1b7 Fase 2: EvaluadorGramatica + GeneradorCadenas + Historial (85/85 tests)
 760c020 docs: agregar README.md completo + LICENSE (MIT)
 041746a docs: agregar PROMPT_RESUMIR.md para retomar sesiones futuras
 2f2a740 docs: actualizar ESTADO/CHECKLIST/DUDAS post-refactor Fase 1
@@ -264,11 +270,12 @@ d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
 
 ### 🎉 Hitos alcanzados
 
-- 🏅 **Modelo robusto** con 85/85 tests pasando (Fases 1 + 2)
+- 🏅 **Modelo robusto** con 105/105 tests pasando (Fases 1, 2 y 3)
 - 🏅 **Refactor completo** con inmutabilidad profunda y Javadoc
 - 🏅 **Evaluador AFD** reproduce exactamente la ruta del enunciado (`aababb`)
 - 🏅 **Evaluador Gramática** reproduce exactamente la expansión del enunciado (`0011`)
 - 🏅 **GeneradorCadenas + Historial** soportan §1.6 "ambas"
+- 🏅 **Conversiones AFD↔Gramática** con equivalencia verificada (ida-vuelta)
 - 🏅 **Documentación completa**: 8 documentos (README + LICENSE + 6 .md)
 - 🏅 **Repo en GitHub** público con SSH configurado persistentemente
 - 🏅 **Stack validado**: JDK 17 + NetBeans + Graphviz + OpenPDF funcionando
@@ -281,24 +288,20 @@ d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
 > 🟡 = IMPORTANTE (afecta fases siguientes)
 > 🟢 = DE IMPLEMENTACIÓN (técnica, se puede asumir si no responde)
 
-### 🔴 Críticas (1 – bloquea Fase 3)
+### 🟡 Importantes sin responder (afectan Fase 4-5)
 
-#### 1.1 Forma de las gramáticas ✅ RESUELTA
-> *"El ejemplo del `.gtk` muestra `A>Ab` (recursiva por la izquierda) y `A>bC` (por la derecha). ¿Se debe soportar **cualquier gramática regular** (lineal por izquierda o por derecha) o solo las lineales por la derecha?"*
+#### 1.2 Estado final extra en Gramática → AFD 🟡
+> *"Para producciones como `B>c` (terminal sin NT en el lado derecho), ¿se requiere agregar un **estado final extra**? ¿Cuál es el criterio exacto?"*
 
-- **Respuesta del catedrático:** **lineales por la derecha solamente**.
-- **Implementación:** `EvaluadorGramatica` valida la derecha-linealidad en el constructor y rechaza con `ValidacionException` las gramáticas que no la cumplen (NT antes de terminales, dos NTs, NT seguido de terminal).
+- **Decisión propia (documentada en Fase 3):** `ConversorGramaticaAFD` crea el estado `F` **solo si hay alguna producción terminal-only**. Si el NT `F` ya existe, usa `F#0`, `F#1`, … Si no hay producciones terminal-only, no se crea `F` (los NTs con producción `epsilon` son las aceptaciones).
 
-#### 1.5 Epsilon en archivos `.gtk` ✅ ASUMIDA
-> *"El formato `.gtk` mostrado no incluye cómo se representa el vacío. ¿Se usa la palabra `epsilon`, un símbolo especial, o línea en blanco?"*
+#### 1.4 Evaluar Cadenas: ¿AFD o Gramática? ✅ IMPLEMENTADO
+- El menú "Evaluar" buscará el nombre en `RepositorioAutomatas` (unificado para AFDs y gramáticas). Estrategia via interfaz `Evaluador`.
 
-- **Decisión propia (documentada):** usar la palabra `epsilon`. Ya consistente con `Gramatica.agregarProduccion` y la UI.
+#### 1.7 Cuándo se dispara la conversión 🟡
+> *"La conversión AFD↔Gramática: ¿se hace **automáticamente al crear** cada uno (con un botón 'Convertir a...') o desde una opción en el menú?"*
 
-#### 1.6 Cadenas válidas/inválidas en el PDF ✅ RESUELTA
-> *"¿Las cadenas válidas/inválidas del reporte se generan **automáticamente** (BFS por longitud) o deben salir de las que el usuario evaluó durante la sesión?"*
-
-- **Respuesta del catedrático:** **ambas**: ≥3 automáticas + las evaluadas por el usuario.
-- **Implementación:** `GeneradorCadenas` (BFS, longitud máx 4) + `HistorialEvaluaciones` (Singleton thread-safe que registra cada evaluación).
+- **Decisión propia (a confirmar):** opción explícita en el menú **Reportes** o submenú **Conversiones** (la integración a la UI es Fase 5). No automática.
 
 ### 🟡 Importantes (4 – afectan Fase 3-5)
 
@@ -338,7 +341,9 @@ d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
 - 🟢 **§1.1** (derecha pura) — resuelta
 - 🟢 **§1.5** (epsilon) — asumida
 - 🟢 **§1.6** (PDF ambas) — resuelta
-- 🟡 Resto pendientes (especialmente **§1.2** que bloquea Fase 3)
+- 🟡 **§1.2** (estado final `F`) — **asumida** en Fase 3
+- 🟡 **§1.7** (cuándo se dispara conversión) — **asumida** (opción en menú)
+- 🟡 Resto pendientes (afectan Fase 4 y 5)
 
 ---
 
@@ -358,15 +363,18 @@ d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
 4. ✅ Pruebas del ejemplo `0011` del enunciado (10 tests específicos).
 5. ✅ Detección de ciclos con poda por estado `(NT, prefijo)`.
 
-### 🟡 Fase 3 (siguiente, 5 días)
+### ✅ Fase 3 – completada
 
-- `ConversorGramaticaAFD` (con estado final extra según §1.2).
-- `ConversorAFDGramatica`.
-- Verificación de equivalencia.
+1. ✅ `ConversorAFDGramatica` + 6 tests.
+2. ✅ `ConversorGramaticaAFD` + 9 tests (incluye `F` y colisiones).
+3. ✅ `EquivalenciaConversionTest` + 5 tests (ida-vuelta en ambas direcciones + equivalencia sobre muestreo exhaustivo).
+4. ✅ 105/105 tests pasan.
+
+### 🟡 Fase 4 (siguiente, 4 días)
 
 ### 🟡 Fase 4 (4 días)
 
-- `LectorAFD` + `LectorGTK` con epsilon configurable.
+- `LectorAFD` + `LectorGTK` con epsilon configurable (asumido `epsilon`).
 - `EscritorAFD` + `EscritorGTK`.
 - Prueba de ida-vuelta: cargar → guardar → cargar.
 
@@ -389,8 +397,8 @@ d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
 | Semana | Fechas | Fases | Estado |
 |:------:|--------|-------|:------:|
 | 1 | 03 – 11 oct | 0 + 1 | ✅ ✅ |
-| 2 | 12 – 18 oct | 2 + mitad 3 | ✅ Fase 2 · 🟡 Fase 3 esperando §1.2 |
-| 3 | 19 – 25 oct | 3 + 4 | ❌ |
+| 2 | 12 – 18 oct | 2 + 3 | ✅ ✅ |
+| 3 | 19 – 25 oct | 4 | ❌ |
 | 4 | 26 oct – 01 nov | 5 + arranque 6 | ❌ |
 | 5 | 02 – 05 nov | 6 + 7 + 8 (entrega) | ❌ |
 | post | 06 nov + | 9 | ❌ |
@@ -476,6 +484,7 @@ Si abrís un chat sin contexto, pegá este bloque:
 
 ## 📝 Notas de versión
 
+- **v1.2** (04-oct-2026): Fase 3 completa — `ConversorAFDGramatica`, `ConversorGramaticaAFD` (con estado final extra `F`), `EquivalenciaConversionTest` + 20 tests nuevos (105/105). §1.2 y §1.7 asumidas.
 - **v1.1** (04-oct-2026): Fase 2 completa — `EvaluadorGramatica`, `GeneradorCadenas`, `HistorialEvaluaciones`, `RegistroEvaluacion` + 23 tests nuevos (85/85). Respuestas del catedrático §1.1 y §1.6 integradas; §1.5 asumida.
 - **v1.0** (03-oct-2026): creación inicial con estado al cierre de Fase 1.
 
