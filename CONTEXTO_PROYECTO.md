@@ -505,6 +505,7 @@ Si abrís un chat sin contexto, pegá este bloque:
 ## 📝 Notas de versión
 
 - **v1.5.1** (06-oct-2026): Fix post-Fase 6 — `VentanaPrincipal` ahora registra las 6 pantallas funcionales (`PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes`) en el `CardLayout`. Sin esto, los botones del menú navegaban a nombres no registrados (fallo silencioso de `CardLayout`).
+- **v1.6** (06-oct-2026): Documenta el fix v1.5.1; actualiza historial con `2630512`.
 - **v1.5** (06-oct-2026): Fase 6 completa — `GeneradorDot`, `GeneradorGraphviz` (ProcessBuilder + ruta configurable), `GeneradorPDF` (OpenPDF) + 19 tests nuevos (182/182). `PanelReportes` botón PDF habilitado. Degradación elegante si Graphviz no está disponible.
 - **v1.4** (06-oct-2026): Fase 5 completa (sub-fases 5A + 5B + 5C) — `Navegador`, `VentanaPrincipal`, `PanelPortada`, `PanelMenu`, `BotonAyuda`, `ParserModo1AFD`, `ParserModo2AFD`, `PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes` + 21 tests nuevos (163/163). Botón PDF queda para Fase 6.
 - **v1.3** (04-oct-2026): Fase 4 completa — `LectorAFD`, `LectorGTK`, `EscritorAFD`, `EscritorGTK`, `ArchivoFactory` + 5 recursos de test + 37 tests nuevos (142/142).
