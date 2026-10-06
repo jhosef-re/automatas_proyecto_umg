@@ -41,8 +41,8 @@ La aplicación permite:
 - Convertir entre ambos modelos.
 - Generar **reportes PDF** con el grafo (Graphviz), detalle y ejemplos de cadenas válidas/inválidas.
 
-> 📌 **Estado actual:** **100 % completo** (78/78 sub-ítems) · Fases 0-7 completas (modelo + UI Swing + reportes PDF + 203 tests JUnit + capturas para Manual de Usuario).
-> 🟢 Manuales y entrega quedan para Fase 8. Defensa en Fase 9.
+> 📌 **Estado actual:** **100 % completo** (78/78 sub-ítems) · Fases 0-8 completas.
+> 🟢 Manuales + `.zip` final listos. Pendiente solo subir a Canvas (Jhosef) y Fase 9 (defensa).
 >
 > 📘 Para el mapa completo del proyecto (desglose por fase, preguntas pendientes, cronograma, riesgos), ver [`CONTEXTO_PROYECTO.md`](./CONTEXTO_PROYECTO.md).
 
@@ -200,8 +200,9 @@ El proyecto fue diseñado para aplicar y poder **explicar en la defensa** los si
 | [`DUDAS_CONSULTAR.md`](./DUDAS_CONSULTAR.md) | Preguntas pendientes al catedrático | ✅ |
 | [`CHECKLIST_INSTALACION.md`](./CHECKLIST_INSTALACION.md) | Setup del entorno (Linux Fedora + NetBeans Flatpak) | ✅ |
 | [`PROMPT_RESUMIR.md`](./PROMPT_RESUMIR.md) | Plantillas para retomar sesiones con IA | ✅ |
-| 📘 Manual de Usuario | Capturas por pantalla, flujo paso a paso | ❌ Fase 8 |
-| 📗 Manual Técnico | Diagrama de clases, algoritmos | ❌ Fase 8 |
+| 📘 [`MANUAL_USUARIO.md`](./docs/MANUAL_USUARIO.md) | Capturas por pantalla, flujo paso a paso | ✅ Fase 8 |
+| 📗 [`MANUAL_TECNICO.md`](./docs/MANUAL_TECNICO.md) | Diagrama de clases, algoritmos, decisiones de diseño | ✅ Fase 8 |
+| 📦 [`RELEASE_v1.0.md`](./docs/RELEASE_v1.0.md) | Notas del release + contenido del zip final | ✅ Fase 8 |
 
 ---
 
@@ -216,8 +217,8 @@ El proyecto fue diseñado para aplicar y poder **explicar en la defensa** los si
 | **4** | Lectores/Escritores `.afd` y `.gtk`                     | ✅ |
 | **5** | UI Swing: 8 paneles + menú                               | ✅ |
 | **6** | Reportes PDF + Graphviz                                  | ✅ |
-| **7** | Pruebas integrales y pulido                            | ❌ |
-| **8** | Documentación final + entrega (.zip)                   | ❌ |
+| **7** | Pruebas integrales y pulido                            | ✅ |
+| **8** | Documentación final + entrega (.zip)                   | ✅ |
 | **9** | Preparación de defensa                                 | ❌ |
 
 > 📅 **Entrega:** jueves 05 de noviembre de 2026, 23:59.

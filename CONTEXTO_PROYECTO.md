@@ -33,7 +33,7 @@
 | 📅 **Entrega** | Jueves 05 de noviembre de 2026, 23:59 |
 | ⏳ **Días restantes** | **30 días** (al 06-oct) |
 | 📊 **Avance global** | **100 %** (78/78 sub-ítems completos) |
-| 🚦 **Estado actual** | 🟢 Fases 0-7 completas. Pendientes: 8 (manuales+entrega) y 9 (defensa) |
+| 🚦 **Estado actual** | 🟢 Fases 0-8 completas. Pendiente: 9 (defensa, post-entrega) |
 | 📦 **Repo GitHub** | https://github.com/jhosef-re/automatas_proyecto_umg |
 
 ### 🎯 Objetivo del proyecto
@@ -81,7 +81,7 @@ Construir una **aplicación de escritorio en Java** que permita:
 | **5** | UI Swing: 8 paneles + menú                   | **100 %** | 13/13 | `█████████████████` |
 | **6** | Reportes PDF + Graphviz                      | **100 %** | 6/6 | `█████████████████` |
 | **7** | Pruebas integrales y pulido                  | **100 %** | 6/6 | `█████████████████` |
-| **8** | Manual Usuario/Técnico + entrega             | **0 %** | 0/4 | `░░░░░░░░░░░░░░░░` |
+| **8** | Manual Usuario/Técnico + entrega             | **100 %** | 5/5 | `█████████████████` |
 | **9** | Defensa del proyecto                         | **0 %** | 0/3 | `░░░░░░░░░░░░░░░░` |
 
 ### 🔍 Lo que ya está hecho (26 ✅)
@@ -141,10 +141,9 @@ Construir una **aplicación de escritorio en Java** que permita:
 - ❌ `PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes`
 - 🟡 Botón **Ayuda** existe solo en `PanelMenu`, falta propagar
 
-### ❌ Lo que falta (7 sub-ítems)
+### ❌ Lo que falta (3 sub-ítems)
 
-- ❌ **Fase 8:** 4 ítems (Manual Usuario + Manual Técnico + `.zip` + subir a Canvas)
-- ❌ **Fase 9:** 3 ítems (preparación defensa)
+- ❌ **Fase 9:** 3 ítems (preparación defensa — ensayo cruzado + explicación de patrones)
 
 ---
 
@@ -266,10 +265,24 @@ Construir una **aplicación de escritorio en Java** que permita:
 - **Reparto de roles del equipo** (Jhosef: modelo+conversores+parsers; Alejandro: UI Swing; Oscar: reportes+manuales+entrega).
 - 203/203 tests JUnit verde (182 originales + 21 nuevos).
 
-### ❌ Fases 8-9 (0 %)
+### ✅ Fase 8 – Documentación y entrega (100 %) **COMPLETA**
 
-- **Fase 8** – Documentación final + entrega (3 días, depende de Fase 7)
-- **Fase 9** – Preparación de defensa (post-entrega)
+```
+██████████████████  (5/5 items)
+```
+
+**Hecho:**
+- **`docs/MANUAL_USUARIO.md`** (~377 líneas): requisitos, portada + menú + 6 flujos paso a paso con capturas, errores frecuentes, tabla de problemas comunes.
+- **`docs/MANUAL_TECNICO.md`** (~726 líneas): conceptos teóricos (AFD/gramática), arquitectura MVC, **diagrama de clases completo en Mermaid**, 4 patrones explicados, **5 algoritmos con pseudocódigo** (evaluación AFD/Gram, conversiones, DOT/PDF), formatos `.afd`/`.gtk`, stack, comandos, 8 decisiones + 5 limitaciones.
+- **`release.sh`**: script bash que limpia, compila, corre los 203 tests (falla si no), y empaqueta el `.zip`.
+- **`dist/ProyectoAutomatas_v1.0_2026-10-06.zip`** (134 archivos, ~4.5 MB) generado y verificado.
+- **`docs/RELEASE_v1.0.md`**: notas del release con desglose, métricas, comandos, responsable y plazo de subida.
+
+**Pendiente:** subir el `.zip` a Canvas antes del **05-nov-2026 23:59** (responsable: Jhosef Reyes).
+
+### ❌ Fases 9 (0 %)
+
+- **Fase 9** – Preparación de defensa (post-entrega): ensayo cruzado, cada integrante puede responder sobre cualquier parte del código.
 
 ---
 
@@ -277,6 +290,11 @@ Construir una **aplicación de escritorio en Java** que permita:
 
 ```
 (pendiente commit docs)        ← más reciente
+8e73377 docs(release): empaquetar ProyectoAutomatas_v1.0_2026-10-06.zip
+1e0801b chore: script de release para empaquetar .zip final (Fase 8.3)
+2e660ed docs: Manual Técnico con arquitectura, patrones, algoritmos y diagrama Mermaid
+c775cb3 docs: Manual de Usuario con capturas y flujos paso a paso (Fase 8.1)
+ab85145 docs: actualizar estado/docs a 100% (Fase 7.6 + 8 commits en esta fase)
 93802b0 chore: limpieza de código muerto y revisión de nombres (Fase 7.4)
 ce6ef3f docs: javadoc en métodos públicos faltantes (Fase 7.3)
 784dc99 docs: capturas de pantallas para Manual de Usuario (Fase 7.5)
@@ -284,14 +302,7 @@ ce6ef3f docs: javadoc en métodos públicos faltantes (Fase 7.3)
 579b57a docs: actualizar README.md con los 3 integrantes del equipo
 2c68d21 docs: documentar reparto de roles del equipo en ESTADO_PROYECTO.md
 f9d7b6d chore: cerrar Fase 0 - DatosCurso reales + 6 archivos de prueba propios
-89193a4 docs: agregar nota v1.6 tras la corrección de docs
-41cfe9f docs: registrar fix del CardLayout (v1.7.1) y nota en Fase 5
-2630512 fix(vista): registrar las 6 pantallas funcionales en el CardLayout
-a85e316 Fase 6: Generadores Dot/Graphviz/PDF + integración UI (182/182 tests)
-e287ee7 docs: actualizar estado/docs a 90% avance (Fases 0-5 completas)
-28e932f Fase 5C: 6 paneles Swing funcionales (Crear AFD/Gram, Evaluar, Cargar, Guardar, Reportes)
-5a161c0 Fase 5B: parsers AFD (modo 1 + modo 2) con tests (163/163 tests)
-8d6f7e2 Fase 5A: vista base Swing (VentanaPrincipal + PanelPortada + PanelMenu + BotonAyuda)
+ab85145 docs: actualizar estado/docs a 100% (Fase 7.6 + 8 commits en esta fase)
 ```
 
 ### 🎉 Hitos alcanzados
@@ -532,6 +543,7 @@ Si abrís un chat sin contexto, pegá este bloque:
 
 ## 📝 Notas de versión
 
+- **v1.8** (06-oct-2026): Fase 8 completa — `docs/MANUAL_USUARIO.md` (~377 líneas, 8 capturas + flujos), `docs/MANUAL_TECNICO.md` (~726 líneas, diagrama Mermaid, 5 algoritmos), `release.sh` (script bash), `dist/ProyectoAutomatas_v1.0_2026-10-06.zip` (134 archivos, ~4.5 MB) generado y verificado, `docs/RELEASE_v1.0.md`. Avance global: 78/78 (Fases 0-8). Pendiente: subida a Canvas (responsable Jhosef) y Fase 9 (defensa).
 - **v1.7** (06-oct-2026): Fase 7 completa — 21 tests de integración end-to-end (`automatas.integration`), 6 archivos de prueba propios con casos borde, DatosCurso con los 3 integrantes reales y catedrático Ing. Alan G. Ucelo Morán, 8 capturas PNG en `docs/capturas/` para Manual de Usuario, javadoc completo en `Evaluador`/`EvaluadorAFD`/`ExcepcionReporte`/`RegistroEvaluacion`, limpieza de código muerto. Avance global: 78/78 (100 %). Tests: 203/203 verde.
 - **v1.6** (06-oct-2026): Documenta el fix v1.5.1; actualiza historial con `2630512`.
 - **v1.5.1** (06-oct-2026): Fix post-Fase 6 — `VentanaPrincipal` ahora registra las 6 pantallas funcionales (`PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes`) en el `CardLayout`. Sin esto, los botones del menú navegaban a nombres no registrados (fallo silencioso de `CardLayout`).

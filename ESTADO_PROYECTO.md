@@ -2,14 +2,14 @@
 **Última actualización:** 06-oct-2026 · **Entrega:** 05-nov-2026
 
 > Leyenda: ✅ hecho · 🟡 parcial (iniciado pero incompleto) · ❌ pendiente · ⚠️ bloqueado
-> **Fase actual:** Fases 0-7 ✅ completas. Pendientes: 8 (manuales + entrega) y 9 (defensa).
+> **Fase actual:** Fases 0-8 ✅ completas. Pendiente: 9 (defensa, post-entrega).
 
 ---
 
 ## Resumen ejecutivo
-- **Avance global estimado:** **100 %** (78/78 sub-ítems completos; Fases 0-7 ✅).
-- **Fase actual:** **Fase 7 ✅ completa**. Suite de tests de integración end-to-end (21 tests nuevos, **203/203** verde), capturas PNG de las 8 pantallas, Javadoc completo, limpieza de código muerto, DatosCurso con los 3 integrantes reales.
-- **Riesgo principal:** Fase 8 (manuales + entrega `.zip`) en 3 días. Manual de Usuario ya tiene material base (capturas).
+- **Avance global estimado:** **100 %** (78/78 sub-ítems; Fases 0-8 ✅).
+- **Fase actual:** **Fase 8 ✅ completa**. Manual de Usuario + Manual Técnico + `.zip` final (`dist/ProyectoAutomatas_v1.0_2026-10-06.zip`, 134 archivos, 4.5 MB) listos para subir a Canvas. Script `release.sh` regenerable.
+- **Riesgo principal:** subir el `.zip` a Canvas antes del 05-nov-2026 23:59 (responsable: Jhosef Reyes). Fase 9 (defensa) es post-entrega.
 
 ---
 
@@ -128,12 +128,14 @@
 - [x] 203/203 tests JUnit verde (182 originales + 21 nuevos)
 - **Entregable cumplido:** app estable, validada de punta a punta, lista para Fase 8 (manuales + entrega).
 
-### Fase 8 – Documentación y entrega (03 – 05 nov) · 3 días
-- [ ] Manual de Usuario (capturas por pantalla)
-- [ ] Manual Técnico (diagrama de clases, algoritmos)
-- [ ] Empaquetado `.zip/.rar` con código + manuales + archivos de prueba
-- [ ] Subir a Canvas **antes de las 23:59 del 05-nov** (no en el último minuto)
-- **Entregable pendiente:** entrega completa.
+### Fase 8 – Documentación y entrega (06 oct) · 3 días ✅ COMPLETO
+- [x] **Manual de Usuario** (`docs/MANUAL_USUARIO.md`, ~377 líneas, con 8 capturas y flujos paso a paso)
+- [x] **Manual Técnico** (`docs/MANUAL_TECNICO.md`, ~726 líneas, con diagrama de clases en Mermaid, 4 patrones explicados, 5 algoritmos con pseudocódigo, 8 decisiones de diseño + 5 limitaciones)
+- [x] **Script de release** (`release.sh`) — limpia build/, compila, corre 203 tests, empaqueta `.zip` portable (sin `.git/`/`build/`/`dist/`)
+- [x] **Empaquetado final** — `dist/ProyectoAutomatas_v1.0_2026-10-06.zip` (134 archivos, ~4.5 MB)
+- [x] **Notas del release** — `docs/RELEASE_v1.0.md` con desglose, métricas, comandos y responsable de subida
+- [ ] Subir a Canvas **antes de las 23:59 del 05-nov** (responsable: Jhosef Reyes)
+- **Entregable cumplido:** zip final + manuales + notas del release; pendiente solo la subida a Canvas.
 
 ### Fase 9 – Preparación de la calificación (06 nov en adelante)
 - [ ] Cada integrante puede explicar cualquier parte del código
@@ -188,8 +190,8 @@ Sem 3 (19-25 oct): Fase 4 ........................... ✅
 Sem 4 (26 oct-01 nov): Fase 5 ....................... ✅
 Sem 5 (02-05 nov): Fase 6 ......................... ✅
 Sem 5b (06-oct): Fase 7 (pruebas + pulido) ........ ✅ ✅
-Sem 6 (07 oct - 04 nov): Fase 8 (manuales + entrega) ❌ pendiente
-Post-entrega:       Fase 9 (preparación defensa) .... ❌ pendiente
+Sem 5b (06-oct): Fase 8 (manuales + zip) ........... ✅
+Post-entre:       Fase 9 (preparación defensa) .... ❌ pendiente
 ```
 
-> **Colchón actual:** ~30 días hasta la entrega (05-nov-2026). Fase 8 con 3 días disponibles, material base de capturas ya disponible.
+> **Colchón actual:** ~30 días hasta la entrega (05-nov-2026). Zip final ya generado y verificado.
