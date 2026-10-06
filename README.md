@@ -13,7 +13,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 ![Estado: En desarrollo](https://img.shields.io/badge/Estado-En%20desarrollo-orange?style=for-the-badge)
-![Avance: 90%](https://img.shields.io/badge/Avance-90%25-blue?style=for-the-badge&logo=progress&logoColor=white)
+![Avance: 97%](https://img.shields.io/badge/Avance-97%25-blue?style=for-the-badge&logo=progress&logoColor=white)
 
 ![Último commit](https://img.shields.io/github/last-commit/jhosef-re/automatas_proyecto_umg?style=flat-square&logo=git&logoColor=white)
 ![Lenguaje top](https://img.shields.io/github/languages/top/jhosef-re/automatas_proyecto_umg?style=flat-square&color=ED8B00)
@@ -41,9 +41,9 @@ La aplicación permite:
 - Convertir entre ambos modelos.
 - Generar **reportes PDF** con el grafo (Graphviz), detalle y ejemplos de cadenas válidas/inválidas.
 
-> 📌 **Estado actual:** **90 % completo** (54/78 sub-ítems) · Fases 0-5 completas (modelo + UI Swing + 163 tests JUnit).
-> 🟢 UI Swing lista (8 paneles + parsers + Factory + ayuda). PDF/Graphviz queda para Fase 6.
-> Fases 6–9 pendientes según el [roadmap](#-roadmap).
+> 📌 **Estado actual:** **97 % completo** (60/78 sub-ítems) · Fases 0-6 completas (modelo + UI Swing + reportes PDF + 182 tests JUnit).
+> 🟢 Reportes PDF con OpenPDF + Graphviz listos. Manuales y entrega quedan para Fase 8.
+> Fases 7–9 pendientes según el [roadmap](#-roadmap).
 >
 > 📘 Para el mapa completo del proyecto (desglose por fase, preguntas pendientes, cronograma, riesgos), ver [`CONTEXTO_PROYECTO.md`](./CONTEXTO_PROYECTO.md).
 
@@ -63,8 +63,9 @@ La aplicación permite:
 | ✅ | Conversión AFD ↔ Gramática (con equivalencia verificada) |
 | ✅ | Cargar/guardar archivos `.afd` y `.gtk` (con Factory) |
 | ✅ | UI Swing completa (Crear AFD/Gram, Evaluar, Cargar, Guardar, Reportes, Ayuda) |
-| ✅ | 163 tests JUnit pasando (modelo + UI parsers + conversores + I/O) |
-| ❌ | Generación de PDF con grafo (Graphviz) + cadenas |
+| ✅ | Generación de PDF con grafo (Graphviz) + cadenas válidas/inválidas |
+| ✅ | 182 tests JUnit pasando (modelo + UI parsers + conversores + I/O + reportes) |
+| ❌ | Manual de Usuario y Manual Técnico |
 | ❌ | Paneles Swing: Crear AFD/Gramática, Evaluar, Cargar, Guardar, Reportes |
 | ❌ | Generación de PDF con grafo (Graphviz) + cadenas |
 | ❌ | Manual de Usuario y Manual Técnico |
@@ -166,11 +167,11 @@ El proyecto usa **JUnit 5.10** (standalone) con cobertura de:
 ```bash
 $ ./probar.sh test
 ...
-Tests run: 163, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 182, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
 ```
 
-> 📊 **Estado actual:** 163/163 tests pasando.
+> 📊 **Estado actual:** 182/182 tests pasando.
 
 ---
 
@@ -215,7 +216,7 @@ El proyecto fue diseñado para aplicar y poder **explicar en la defensa** los si
 | **3** | Conversiones AFD ↔ Gramática                            | ✅ |
 | **4** | Lectores/Escritores `.afd` y `.gtk`                     | ✅ |
 | **5** | UI Swing: 8 paneles + menú                               | ✅ |
-| **6** | Reportes PDF + Graphviz                                  | ❌ |
+| **6** | Reportes PDF + Graphviz                                  | ✅ |
 | **7** | Pruebas integrales y pulido                            | ❌ |
 | **8** | Documentación final + entrega (.zip)                   | ❌ |
 | **9** | Preparación de defensa                                 | ❌ |

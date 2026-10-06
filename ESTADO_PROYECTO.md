@@ -105,14 +105,18 @@
 - [x] 163/163 tests pasan
 - **Entregable cumplido:** todos los flujos del menú recorribles de punta a punta. PDF queda para Fase 6.
 
-### Fase 6 – Reportes y Graphviz (29 oct – 02 nov) · 4 días
-- [ ] `reporte/GeneradorDot.java`
-- [ ] `reporte/GeneradorGraphviz.java` (ProcessBuilder → `dot` → PNG)
-- [ ] `reporte/GeneradorPDF.java`
-- [ ] **Ver detalle** (formato AFD/gramática)
-- [ ] **Generar PDF** con grafo + cadenas válidas + inválidas + evaluadas
-- [ ] Manejo de error si Graphviz no está instalado
-- **Entregable pendiente:** PDF generado para un AFD y una gramática de ejemplo.
+### Fase 6 – Reportes y Graphviz (29 oct – 02 nov) · 4 días ✅ COMPLETO
+- [x] `reporte/ExcepcionReporte.java` (RuntimeException para errores externos)
+- [x] `reporte/GeneradorDot.java` (AFD → DOT: doble círculo para aceptación, flecha de inicio, símbolos agrupados)
+- [x] `reporte/GeneradorGraphviz.java` (ProcessBuilder → `dot` → PNG; ruta configurable vía propiedad `automatas.graphviz.path`)
+- [x] `reporte/GeneradorPDF.java` (OpenPDF: detalle + grafo + 3 válidas + 3 inválidas + evaluadas)
+- [x] **Ver detalle** (formato AFD/gramática) — ya hecho en PanelReportes (5C)
+- [x] **Generar PDF** con grafo + cadenas válidas + inválidas + evaluadas
+- [x] Degradación elegante si Graphviz no está disponible (PDF sin imagen + DOT en monoespaciado)
+- [x] Botón "Generar PDF" habilitado en `PanelReportes` con JFileChooser
+- [x] `probar.sh` actualizado para incluir openpdf en classpath de tests
+- [x] 182/182 tests pasan
+- **Entregable cumplido:** PDF generado para un AFD y una gramática de ejemplo.
 
 ### Fase 7 – Pruebas integrales y pulido (02 – 03 nov) · 2 días
 - [ ] Recorrer casos de §1.3 del plan contra la app completa
@@ -168,7 +172,8 @@ Sem 1 (03-11 oct): Fase 0 + Fase 1 + refactor ........ ✅ ✅ ✅
 Sem 2 (12-18 oct): Fase 2 + Fase 3 .................. ✅ ✅
 Sem 3 (19-25 oct): Fase 4 ........................... ✅
 Sem 4 (26 oct-01 nov): Fase 5 ....................... ✅
-Sem 5 (02-05 nov): Fase 6 + 7 + 8 (entrega) ......... ❌
+Sem 5 (02-05 nov): Fase 6 ......................... ✅
+Sem 5b: Fase 7 + 8 (entrega) ....................... ❌
 ```
 
 > **Colchón actual:** ~2 días. Si Fase 0 o Fase 1 se atrasan, recortar adornos de UI antes que funcionalidad.

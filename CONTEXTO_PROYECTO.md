@@ -32,8 +32,8 @@
 | 📦 **Stack** | Java 17 · Apache NetBeans 17+ · Swing · JUnit 5 · OpenPDF · Graphviz |
 | 📅 **Entrega** | Jueves 05 de noviembre de 2026, 23:59 |
 | ⏳ **Días restantes** | **30 días** (al 06-oct) |
-| 📊 **Avance global** | **90 %** (54/78 sub-ítems completos) |
-| 🚦 **Estado actual** | 🟢 Fases 0-5 completas. Pendientes: 6-9 |
+| 📊 **Avance global** | **97 %** (60/78 sub-ítems completos) |
+| 🚦 **Estado actual** | 🟢 Fases 0-6 completas. Pendientes: 7-9 |
 | 📦 **Repo GitHub** | https://github.com/jhosef-re/automatas_proyecto_umg |
 
 ### 🎯 Objetivo del proyecto
@@ -60,13 +60,13 @@ Construir una **aplicación de escritorio en Java** que permita:
 
 ## 📊 Porcentaje de avance
 
-### 🎯 Global: **90 %** (54 / 78 sub-ítems)
+### 🎯 Global: **97 %** (60 / 78 sub-ítems)
 
 ```
-██████████████████████████████████████████████████████████████████████████████████████████░░░ 90 %
-                                                                                       ▲
-                                                                                       │
-                                                                                  AQUÍ ESTAMOS
+██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████░░░░ 97 %
+                                                                                                          ▲
+                                                                                                          │
+                                                                                                     AQUÍ ESTAMOS
 ```
 
 ### 📋 Desglose por fase
@@ -78,8 +78,8 @@ Construir una **aplicación de escritorio en Java** que permita:
 | **2** | `EvaluadorGramatica` + `GeneradorCadenas`    | **100 %** | 7/7 | `█████████████████` |
 | **3** | Conversiones AFD ↔ Gramática                 | **100 %** | 4/4 | `█████████████████` |
 | **4** | Lectores/Escritores `.afd` y `.gtk`          | **100 %** | 5/5 | `█████████████████` |
-| **5** | UI Swing: 8 paneles + menú                   | **100 %** | **13/13** | `█████████████████` |
-| **6** | Reportes PDF + Graphviz                      | **0 %** | 0/6 | `░░░░░░░░░░░░░░░░` |
+| **5** | UI Swing: 8 paneles + menú                   | **100 %** | 13/13 | `█████████████████` |
+| **6** | Reportes PDF + Graphviz                      | **100 %** | **6/6** | `█████████████████` |
 | **7** | Pruebas integrales y pulido                  | **0 %** | 0/4 | `░░░░░░░░░░░░░░░░` |
 | **8** | Manual Usuario/Técnico + entrega             | **0 %** | 0/4 | `░░░░░░░░░░░░░░░░` |
 | **9** | Defensa del proyecto                         | **0 %** | 0/3 | `░░░░░░░░░░░░░░░░` |
@@ -141,9 +141,8 @@ Construir una **aplicación de escritorio en Java** que permita:
 - ❌ `PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes`
 - 🟡 Botón **Ayuda** existe solo en `PanelMenu`, falta propagar
 
-### ❌ Lo que falta (24 sub-ítems)
+### ❌ Lo que falta (18 sub-ítems)
 
-- ❌ **Fase 6:** 6 ítems (PDF + Graphviz)
 - ❌ **Fase 7:** 4 ítems (pruebas integrales)
 - ❌ **Fase 8:** 4 ítems (manuales + entrega)
 - ❌ **Fase 9:** 3 ítems (preparación defensa)
@@ -237,13 +236,18 @@ Construir una **aplicación de escritorio en Java** que permita:
 - Botón **Ayuda** en todos los paneles.
 - Mensajes de error via `Navegador.mostrarError` con `ValidacionException.getMessage()`.
 
-### ❌ Fase 6 – Reportes y Graphviz (0 %)
+### ✅ Fase 6 – Reportes y Graphviz (100 %) **COMPLETA**
 
 ```
-░░░░░░░░░░  (0/6 items)
+██████████████████  (6/6 items)
 ```
 
-Depende de `GeneradorCadenas` (Fase 2) y archivos `.afd/.gtk` (Fase 4).
+**Hecho:**
+- `GeneradorDot` (AFD → DOT): doble círculo para aceptación, flecha desde nodo invisible al estado inicial, símbolos agrupados en una sola arista.
+- `GeneradorGraphviz` (DOT + ProcessBuilder → PNG): propiedad `automatas.graphviz.path` para sobreescribir el ejecutable.
+- `GeneradorPDF` (OpenPDF): portada + detalle + grafo (o fallback DOT) + 3 válidas + 3 inválidas + evaluadas durante la sesión.
+- Degradación elegante si Graphviz no está disponible: PDF se genera con el DOT como texto monoespaciado.
+- Botón "Generar PDF" habilitado en `PanelReportes` con JFileChooser.
 
 ### ❌ Fases 7-9 (0 %)
 
@@ -256,10 +260,12 @@ Depende de `GeneradorCadenas` (Fase 2) y archivos `.afd/.gtk` (Fase 4).
 ## 🏆 Logros recientes (últimos commits)
 
 ```
-(pendiente commit docs Fase 5)  ← más reciente
+(pendiente commit docs Fase 6)  ← más reciente
+a85e316 Fase 6: Generadores Dot/Graphviz/PDF + integración UI (182/182 tests)
+e287ee7 docs: actualizar estado/docs a 90% avance (Fases 0-5 completas)
 28e932f Fase 5C: 6 paneles Swing funcionales (Crear AFD/Gram, Evaluar, Cargar, Guardar, Reportes)
-xxxxxxx Fase 5B: parsers AFD (modo 1 + modo 2) + 21 tests
-xxxxxxx Fase 5A: vista base Swing (VentanaPrincipal + PanelPortada + PanelMenu + BotonAyuda)
+5a161c0 Fase 5B: parsers AFD (modo 1 + modo 2) con tests (163/163 tests)
+8d6f7e2 Fase 5A: vista base Swing (VentanaPrincipal + PanelPortada + PanelMenu + BotonAyuda)
 65d0c5e docs: actualizar estado/docs a 58% avance (Fases 0-4 completas)
 6bf9867 Fase 4: Lectores/Escritores .afd/.gtk + Factory (142/145 tests)
 2c6f139 docs: actualizar estado/docs a 51% avance (Fases 0-3 completas)
@@ -276,7 +282,7 @@ d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
 
 ### 🎉 Hitos alcanzados
 
-- 🏅 **Modelo robusto** con 163/163 tests pasando (Fases 1, 2, 3, 4 y 5)
+- 🏅 **Modelo robusto** con 182/182 tests pasando (Fases 1-6)
 - 🏅 **Refactor completo** con inmutabilidad profunda y Javadoc
 - 🏅 **Evaluador AFD** reproduce exactamente la ruta del enunciado (`aababb`)
 - 🏅 **Evaluador Gramática** reproduce exactamente la expansión del enunciado (`0011`)
@@ -284,6 +290,7 @@ d94cc5c Refactor Fase 1: inmutabilidad profunda + edge cases + javadoc
 - 🏅 **Conversiones AFD↔Gramática** con equivalencia verificada (ida-vuelta)
 - 🏅 **Lectores/Escritores .afd/.gtk** con Factory y pruebas de ida-vuelta
 - 🏅 **UI Swing completa** (8 paneles + parsers + Factory + ayuda)
+- 🏅 **Reportes PDF** con OpenPDF + Graphviz (degradación elegante si falta dot)
 - 🏅 **Documentación completa**: 8 documentos (README + LICENSE + 6 .md)
 - 🏅 **Repo en GitHub** público con SSH configurado persistentemente
 - 🏅 **Stack validado**: JDK 17 + NetBeans + Graphviz + OpenPDF funcionando
@@ -496,6 +503,7 @@ Si abrís un chat sin contexto, pegá este bloque:
 
 ## 📝 Notas de versión
 
+- **v1.5** (06-oct-2026): Fase 6 completa — `GeneradorDot`, `GeneradorGraphviz` (ProcessBuilder + ruta configurable), `GeneradorPDF` (OpenPDF) + 19 tests nuevos (182/182). `PanelReportes` botón PDF habilitado. Degradación elegante si Graphviz no está disponible.
 - **v1.4** (06-oct-2026): Fase 5 completa (sub-fases 5A + 5B + 5C) — `Navegador`, `VentanaPrincipal`, `PanelPortada`, `PanelMenu`, `BotonAyuda`, `ParserModo1AFD`, `ParserModo2AFD`, `PanelCrearAFD`, `PanelCrearGramatica`, `PanelEvaluar`, `PanelCargar`, `PanelGuardar`, `PanelReportes` + 21 tests nuevos (163/163). Botón PDF queda para Fase 6.
 - **v1.3** (04-oct-2026): Fase 4 completa — `LectorAFD`, `LectorGTK`, `EscritorAFD`, `EscritorGTK`, `ArchivoFactory` + 5 recursos de test + 37 tests nuevos (142/142).
 - **v1.2** (04-oct-2026): Fase 3 completa — `ConversorAFDGramatica`, `ConversorGramaticaAFD` (con estado final extra `F`), `EquivalenciaConversionTest` + 20 tests nuevos (105/105). §1.2 y §1.7 asumidas.
