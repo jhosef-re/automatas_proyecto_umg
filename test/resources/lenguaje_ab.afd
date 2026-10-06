@@ -1,0 +1,7 @@
+# AFD que acepta solo la cadena "ab"
+A,B,a;false,true
+A,C,b;false,false
+B,C,a;true,false
+B,C,b;true,false
+C,C,a;false,false
+C,C,b;false,false

@@ -1,0 +1,3 @@
+# Gramatica con disyuncion (repeticion del NT) - genera {ab, ac}
+S>a b
+S>a c

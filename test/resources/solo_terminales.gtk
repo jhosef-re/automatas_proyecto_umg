@@ -1,0 +1,2 @@
+# Gramatica con produccion de solo terminales - genera exactamente "ab"
+S>a b

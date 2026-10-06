@@ -1,0 +1,3 @@
+# AFD con un unico estado - acepta cualquier cadena (incluso vacia)
+A,A,a;true,true
+A,A,b;true,true

@@ -4,19 +4,50 @@
  */
 package automatas.vista;
 
-/** Datos mostrados en la portada y en la opción Ayuda. TODO: completar con los reales. */
+/**
+ * Datos del curso y del equipo mostrados en la portada y en la opción Ayuda.
+ * Los valores están completos (sin placeholders).
+ */
 public final class DatosCurso {
+
     public static final String CURSO = "Autómatas y Lenguajes Formales";
-    public static final String SECCION = "<sección>";
-    public static final String CARNE = "<carné>";
-    public static final String CATEDRATICO = "<nombre del catedrático>";
+    public static final String SECCION = "A";
+    public static final String CARNE = "9390-24-4816";
+    public static final String CATEDRATICO = "Inge. Alan G. Ucelo Morán";
+
+    /** Carnés completos de los integrantes del equipo, en el mismo orden que {@link #NOMBRES}. */
+    public static final String[] CARNES = {
+        "9390-24-4816",
+        "9390-24-7148",
+        "9390-24-8224"
+    };
+
+    /** Nombres completos de los integrantes del equipo, en el mismo orden que {@link #CARNES}. */
+    public static final String[] NOMBRES = {
+        "Jhosef Estefano Reyes Román",
+        "Alejandro Leiva García",
+        "Oscar René Gonzales Rojas"
+    };
 
     private DatosCurso() { }
 
+    /**
+     * Texto mostrado por el botón Ayuda en cada panel. Lista el curso, la
+     * sección, el catedrático y el último dígito del carné de cada
+     * integrante del equipo.
+     *
+     * @return texto multilínea listo para mostrar en un {@code JOptionPane}
+     */
     public static String textoAyuda() {
-        String ultimo = CARNE.isEmpty() ? "?" : CARNE.substring(CARNE.length() - 1);
-        return "Curso: " + CURSO
-             + "\nCatedrático: " + CATEDRATICO
-             + "\nÚltimo dígito del carné: " + ultimo;
+        StringBuilder sb = new StringBuilder();
+        sb.append("Curso: ").append(CURSO).append('\n');
+        sb.append("Sección: ").append(SECCION).append('\n');
+        sb.append("Catedrático: ").append(CATEDRATICO).append('\n');
+        sb.append("Integrantes (último dígito del carné):\n");
+        for (int i = 0; i < NOMBRES.length; i++) {
+            String ultDig = CARNES[i].substring(CARNES[i].length() - 1);
+            sb.append("  • ").append(NOMBRES[i]).append(" → ").append(ultDig).append('\n');
+        }
+        return sb.toString();
     }
 }

@@ -1,0 +1,3 @@
+# Gramatica con produccion multi-terminal derecha-lineal - genera exactamente "abc"
+S>a b C
+C>c
